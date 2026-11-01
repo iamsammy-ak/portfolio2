@@ -7,6 +7,7 @@
 //        [--wait=1500]         ms to let the page animate after scrolling and moving
 //        [--eval=js]           JavaScript to run in the page before the shot (its result is printed)
 //        [--touch]             emulate a touch screen (phone checks)
+//        [--swipe=x,y;x,y;…]   drag a finger through these points (touch events); --hold keeps it down for the shot
 import { spawn } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { setTimeout as sleep } from 'node:timers/promises';
@@ -50,6 +51,16 @@ try {
       const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], n = 12;
       for (let k = 1; k <= n; k++) { await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: x0 + (x1 - x0) * k / n, y: y0 + (y1 - y0) * k / n }); await sleep(16); }
     }
+  }
+  if (args.swipe) {
+    const pts = String(args.swipe).split(';').map(p => p.split(',').map(Number));
+    const tp = (x, y) => ({ touchPoints: [{ x, y, radiusX: 4, radiusY: 4, force: 1 }] });
+    await send('Input.dispatchTouchEvent', { type: 'touchStart', ...tp(pts[0][0], pts[0][1]) });
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], n = 14;
+      for (let k = 1; k <= n; k++) { await send('Input.dispatchTouchEvent', { type: 'touchMove', ...tp(x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * k / n) }); await sleep(16); }
+    }
+    if (!args.hold) await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   }
   await sleep(+(args.wait || 1200));
   if (args.eval) console.log('eval:', JSON.stringify(await ev(String(args.eval))));

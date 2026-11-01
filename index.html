@@ -278,7 +278,7 @@ footer a:hover { color: var(--paper); }
     <canvas id="hud" aria-hidden="true"></canvas>
     <div class="readout mono" id="readout">Face mesh · 478 pts<br>Tracking</div>
     <div class="hint mono" id="hint">Move to reveal<br>Scroll to go deeper</div>
-    <script>if (matchMedia('(hover: none)').matches) document.getElementById('hint').innerHTML = 'Tap to scan<br>Scroll to go deeper';</script>
+    <script>if (matchMedia('(hover: none)').matches) document.getElementById('hint').innerHTML = 'Touch the face to reveal<br>Scroll to go deeper';</script>
   </div>
 </div>
 
@@ -846,7 +846,7 @@ async function initHero() {
   scene = new THREE.Scene(); cellScene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(28, 1, 0.002, 100);
   fluid = new Fluid(renderer);
-  if (TOUCH) { fluid.fade = 0.9785; fluid.perFrame = true; }
+  if (TOUCH) { fluid.fade = 0.982; fluid.perFrame = true; }  // a shade quicker than the laptop's 0.985: a tap's bloom should not linger
   const tex = t => { const x = new THREE.Texture(t); x.needsUpdate = true; x.minFilter = THREE.LinearFilter; return x; };
   const neckV = 1 - Math.min(0.98, MESH.pts[152][1] - 0.012);   // at the chin line, in texture v
   uniforms = {
@@ -913,7 +913,8 @@ async function initHero() {
         gl_FragColor = vec4(mix(outCol, codeInk(), inkCode()), 1.0);
       }`
   });
-  mesh = new THREE.Mesh(new THREE.PlaneGeometry(PLANE_W, PLANE_H, 200, 300), mat);
+  // Phones push a third as many vertices through the depth displacement; the relief is smooth enough not to show it.
+  mesh = new THREE.Mesh(new THREE.PlaneGeometry(PLANE_W, PLANE_H, innerWidth <= 760 ? 120 : 200, innerWidth <= 760 ? 180 : 300), mat);
   const back = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
     uniforms, depthTest: false, depthWrite: false, extensions: { derivatives: true },
     vertexShader: `void main() { gl_Position = vec4(position.xy, 0.999, 1.0); }`,
@@ -1120,14 +1121,19 @@ function point(x, y) {
 }
 addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; if (workEl.contains(e.target)) { ptr.inside = false; return; } point(e.clientX, e.clientY); }, { passive: true });
 addEventListener('pointerdown', e => { if (e.pointerType === 'touch') burst(e.clientX, e.clientY); else point(e.clientX, e.clientY); }, { passive: true });
+// Phones: a finger on the face does what the cursor does on a laptop. It turns the head toward itself and, as it
+// moves, lays the same ink trail that reveals the machine (touchmove keeps firing while the page scrolls, and the
+// listeners are passive, so scrolling is never blocked). A tap with no movement still blooms (burst, on pointerdown).
 function steerTo(e) {
-  const f = e.touches[0], r = gl.getBoundingClientRect();
+  const f = e.touches[0];
   if (!f || !W || !H) return;
-  rot.ty = ((f.clientX - r.left) / W - 0.5) * 0.27; rot.tx = ((f.clientY - r.top) / H - 0.5) * 0.105;
+  if (prog < 0.3 && !workEl.contains(e.target)) point(f.clientX, f.clientY);
+  else { const r = gl.getBoundingClientRect(); rot.ty = ((f.clientX - r.left) / W - 0.5) * 0.27; rot.tx = ((f.clientY - r.top) / H - 0.5) * 0.105; }
 }
-addEventListener('touchstart', e => { steer.on = true; steerTo(e); }, { passive: true });
+addEventListener('touchstart', e => { steer.on = true; ptr.inside = false; steerTo(e); }, { passive: true });
 addEventListener('touchmove', steerTo, { passive: true });
-const unsteer = e => { if (!e.touches.length) { steer.on = false; steer.until = performance.now() / 1000 + 1.2; } };
+// The finger lets go: the lens and the tracking boxes stop following its last spot, and the head eases back to its drift.
+const unsteer = e => { if (!e.touches.length) { steer.on = false; steer.until = performance.now() / 1000 + 1.2; ptr.inside = false; } };
 addEventListener('touchend', unsteer, { passive: true });
 addEventListener('touchcancel', unsteer, { passive: true });
 // A ring of small outward splats: the ink opens like a flower where the finger lands, then fades.
