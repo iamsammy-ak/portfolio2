@@ -4,7 +4,8 @@ One page, one continuous cut: a studio portrait in 3D that a cursor (or a finger
 a scroll-driven journey reel, the projects, and how to work together. Built after the structure and
 motion of benkaluza.com, rebuilt for an engineer.
 
-No build step. Open `index.html` from any static host (GitHub Pages works as is).
+Live at **https://iamsammy-ak.github.io/portfolio2/** (GitHub Pages, from the `main` branch).
+No build step: push to `main` and the site updates within a minute or two.
 
 ## What's in here
 
