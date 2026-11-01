@@ -1124,21 +1124,24 @@ addEventListener('pointerdown', e => { if (e.pointerType === 'touch') burst(e.cl
 // Phones: a finger on the face does what the cursor does on a laptop. It turns the head toward itself and, as it
 // moves, lays the same ink trail that reveals the machine (touchmove keeps firing while the page scrolls, and the
 // listeners are passive, so scrolling is never blocked). A tap with no movement still blooms (burst, on pointerdown).
+// It works for as long as the figure is on screen (the whole hero, machine stage included), so the machine's eyes
+// follow the finger and the code trail runs over the metal, as they do under a cursor.
 function steerTo(e) {
   const f = e.touches[0];
-  if (!f || !W || !H) return;
-  if (prog < 0.3 && !workEl.contains(e.target)) point(f.clientX, f.clientY);
-  else { const r = gl.getBoundingClientRect(); rot.ty = ((f.clientX - r.left) / W - 0.5) * 0.27; rot.tx = ((f.clientY - r.top) / H - 0.5) * 0.105; }
+  if (!f || !W || !H || prog >= 0.995 || workEl.contains(e.target)) return;
+  point(f.clientX, f.clientY);
 }
+// A new touch starts its own trail: the pointer forgets where the last finger was, so no streak joins the two.
 addEventListener('touchstart', e => { steer.on = true; ptr.inside = false; steerTo(e); }, { passive: true });
 addEventListener('touchmove', steerTo, { passive: true });
-// The finger lets go: the lens and the tracking boxes stop following its last spot, and the head eases back to its drift.
-const unsteer = e => { if (!e.touches.length) { steer.on = false; steer.until = performance.now() / 1000 + 1.2; ptr.inside = false; } };
+// The finger lets go: the head eases back to its drift after a moment. The pointer stays where the finger was, as a
+// resting cursor would, so the machine keeps looking that way until the next touch.
+const unsteer = e => { if (!e.touches.length) { steer.on = false; steer.until = performance.now() / 1000 + 1.2; } };
 addEventListener('touchend', unsteer, { passive: true });
 addEventListener('touchcancel', unsteer, { passive: true });
 // A ring of small outward splats: the ink opens like a flower where the finger lands, then fades.
 function burst(x, y) {
-  if (!fluid || !W || !H || reduce || prog > 0.3 || workEl.contains(document.elementFromPoint(x, y))) return;
+  if (!fluid || !W || !H || reduce || prog >= 0.995 || workEl.contains(document.elementFromPoint(x, y))) return;
   tapAge = 0;
   for (let k = 0; k < 9; k++) {
     const a = k / 9 * Math.PI * 2, vx = Math.cos(a), vy = Math.sin(a);
