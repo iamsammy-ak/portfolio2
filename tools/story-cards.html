@@ -1,0 +1,220 @@
+<!doctype html>
+<!-- The journey cards, drawn in HTML and photographed by tools/render_story.sh with headless Chrome.
+     Open with #N (0 to 7) to show one card filling the window. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: 'Archivo'; font-weight: 300 900; font-stretch: 62% 125%; src: url(../assets/fonts/archivo-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Geist'; font-weight: 400 600; src: url(../assets/fonts/geist-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 400 500; src: url(../assets/fonts/geist-mono-latin.woff2) format('woff2'); }
+:root { --ink: #0E0E0D; --paper: #F2F2F2; --soft: #8A8A85; --line: #2A2A28; --display: Archivo, sans-serif; --mono: "Geist Mono", monospace; --sans: Geist, sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #000; }
+body { font-family: var(--sans); color: var(--paper); }
+.card { position: relative; overflow: hidden; background: var(--ink) linear-gradient(transparent 27px, #18181714 28px) 0 0 / 28px 28px, var(--ink) linear-gradient(90deg, transparent 27px, #18181714 28px) 0 0 / 28px 28px; display: none; }
+.card.show { display: block; }
+.card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 27px, rgba(255,255,255,.035) 28px) 0 0 / 28px 28px, linear-gradient(transparent 27px, rgba(255,255,255,.035) 28px) 0 0 / 28px 28px; pointer-events: none; }
+.card > * { position: relative; }
+.mono { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.head { position: absolute; top: 26px; left: 30px; right: 30px; display: flex; justify-content: space-between; }
+.head b { color: var(--acc); font-weight: 500; }
+.big { position: absolute; left: 30px; bottom: 26px; margin: 0; font-family: var(--display); font-weight: 850; font-stretch: 80%; text-transform: uppercase; line-height: .86; letter-spacing: -.015em; }
+.big em { font-style: normal; color: var(--acc); }
+.tag { position: absolute; right: 30px; bottom: 30px; text-align: right; }
+.tag b { display: block; font-family: var(--display); font-weight: 800; font-stretch: 88%; font-size: 44px; line-height: .9; color: var(--acc); }
+svg { display: block; }
+.term { position: absolute; left: 30px; right: 30px; top: 80px; font-family: var(--mono); font-size: 15px; line-height: 1.75; color: #BDBDB8; white-space: pre; }
+.term i { font-style: normal; color: var(--acc); }
+.term u { text-decoration: none; color: #5E5E5A; }
+.cur { display: inline-block; width: 9px; height: 17px; background: var(--acc); vertical-align: -3px; }
+.tiles { position: absolute; left: 30px; right: 30px; top: 76px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile { border: 1px solid var(--line); background: #141413; padding: 16px 18px; }
+.tile .k { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.tile .v { font-family: var(--display); font-weight: 800; font-stretch: 85%; font-size: 54px; line-height: 1; margin-top: 8px; }
+.tile .v em { font-style: normal; color: var(--acc); }
+.grid5 { position: absolute; left: 30px; top: 80px; display: grid; grid-template-columns: repeat(5, 54px); gap: 10px; }
+.grid5 span { width: 54px; height: 54px; border: 1px solid var(--line); background: #141413; display: grid; place-items: center; }
+.grid5 svg { width: 26px; height: 26px; fill: #CFCFCA; }
+.grid5 span.me { border-color: var(--acc); } .grid5 span.me svg { fill: var(--acc); }
+.board { position: absolute; left: 50%; top: 130px; transform: translateX(-50%); display: grid; grid-template-columns: repeat(8, 76px); border: 1px solid #3a3a37; }
+.board span { width: 76px; height: 76px; display: grid; place-items: center; font-size: 56px; line-height: 1; }
+.board span:nth-child(16n+1), .board span:nth-child(16n+3), .board span:nth-child(16n+5), .board span:nth-child(16n+7), .board span:nth-child(16n+10), .board span:nth-child(16n+12), .board span:nth-child(16n+14), .board span:nth-child(16n+16) { background: #1C1C1A; }
+.board span { background: #121211; color: #E2E2DD; }
+.board span.r { color: var(--acc); }
+.podium { position: absolute; left: 30px; right: 30px; bottom: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: end; height: 300px; }
+.podium div { border: 1px solid var(--line); background: #141413; padding: 18px 20px; display: grid; align-content: start; gap: 6px; }
+.podium div b { font-family: var(--display); font-weight: 850; font-stretch: 80%; font-size: 72px; line-height: .9; color: var(--acc); }
+.podium div span { font-family: var(--display); font-weight: 800; font-stretch: 88%; font-size: 26px; line-height: 1; text-transform: uppercase; }
+.podium div small { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.podium .p1 { height: 300px; } .podium .p2 { height: 232px; } .podium .p3 { height: 300px; }
+.formula { position: absolute; left: 30px; top: 80px; font-family: var(--mono); font-size: 15px; line-height: 1.8; color: #BDBDB8; }
+.formula i { font-style: normal; color: var(--acc); }
+</style>
+</head>
+<body>
+
+<!-- 0 · 2022 · Politecnico di Torino · 800x1000 -->
+<section class="card" style="--acc:#FAF600;width:800px;height:1000px" data-ar="0.8">
+  <div class="head mono"><span><b>polito.it</b> · torino</span><span>45.06° N · 7.66° E</span></div>
+  <div class="term"><u>$</u> ssh abhishek@polito.it
+<u>></u> welcome, matricola <i>s3********</i>
+<u>></u> programme   <i>computer engineering</i>
+<u>></u> language    english
+<u>></u> credits     0 / 180
+<u>></u> compiling first C program…
+<u>></u> <i>Hello, Torino.</i>
+<u>$</u> <span class="cur"></span></div>
+  <svg viewBox="0 0 800 1000" width="800" height="1000" style="position:absolute;inset:0" aria-hidden="true">
+    <g fill="none" stroke="#FAF600" stroke-width="2" opacity=".9">
+      <!-- logic gates -->
+      <path d="M120 520h80M120 560h80M200 500h60a40 40 0 0 1 0 80h-60zM300 540h60"/>
+      <path d="M120 640h80M120 680h80M200 620q50 0 90 40q-40 40-90 40q20-40 0-80zM290 660h70"/>
+      <path d="M360 540v120M360 600h60M420 560a40 40 0 0 1 0 80zM420 560h-10v80h10M460 600h60"/>
+      <circle cx="526" cy="600" r="6"/>
+      <path d="M532 600h80M612 600v-60h60M612 600v60h60"/>
+    </g>
+    <g font-family="Geist Mono" font-size="14" fill="#8A8A85">
+      <text x="80" y="525">1</text><text x="80" y="565">0</text><text x="80" y="645">1</text><text x="80" y="685">1</text>
+      <text x="690" y="545" fill="#FAF600">1</text><text x="690" y="665" fill="#FAF600">0</text>
+    </g>
+  </svg>
+  <h1 class="big" style="font-size:150px">Hello,<br><em>Torino.</em></h1>
+</section>
+
+<!-- 1 · 2022 · AIESEC · 1280x720 -->
+<section class="card" style="--acc:#37A8FF;width:1280px;height:720px" data-ar="1.7778">
+  <div class="head mono"><span><b>aiesec</b> · torino local committee</span><span>campaign · q1 2023</span></div>
+  <div class="grid5" id="team"></div>
+  <svg viewBox="0 0 1280 720" width="1280" height="720" style="position:absolute;inset:0" aria-hidden="true">
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A" letter-spacing="1">
+      <text x="440" y="96">REACH PER WEEK</text>
+    </g>
+    <g fill="#37A8FF">
+      <rect x="440" y="300" width="36" height="60"/><rect x="490" y="270" width="36" height="90"/><rect x="540" y="285" width="36" height="75"/><rect x="590" y="230" width="36" height="130"/>
+      <rect x="640" y="210" width="36" height="150"/><rect x="690" y="240" width="36" height="120"/><rect x="740" y="170" width="36" height="190"/><rect x="790" y="150" width="36" height="210"/>
+      <rect x="840" y="190" width="36" height="170"/><rect x="890" y="120" width="36" height="240"/><rect x="940" y="110" width="36" height="250"/><rect x="990" y="130" width="36" height="230"/>
+      <rect x="1040" y="100" width="36" height="260"/><rect x="1090" y="126" width="36" height="234"/><rect x="1140" y="84" width="36" height="276"/>
+    </g>
+    <line x1="440" y1="360.5" x2="1180" y2="360.5" stroke="#3A3A37"/>
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A"><text x="440" y="382">W1</text><text x="1140" y="382">W15</text></g>
+  </svg>
+  <h1 class="big" style="font-size:120px">Ten volunteers,<br><em>one calendar.</em></h1>
+  <div class="tag"><span class="mono">events run</span><b>12</b></div>
+</section>
+
+<!-- 2 · 2023 · Fibzio · 1280x720 -->
+<section class="card" style="--acc:#F2C94C;width:1280px;height:720px" data-ar="1.7778">
+  <div class="head mono"><span><b>fibzio</b> · service desk · power bi</span><span>refreshed 06:00 · ms sql · postgresql</span></div>
+  <div class="tiles">
+    <div class="tile"><div class="k">SLA adherence</div><div class="v">99.<em>2</em>%</div></div>
+    <div class="tile"><div class="k">Reporting turnaround</div><div class="v"><em>−40</em>%</div></div>
+    <div class="tile"><div class="k">Incidents</div><div class="v"><em>−20</em>%</div></div>
+  </div>
+  <svg viewBox="0 0 1280 720" width="1280" height="720" style="position:absolute;inset:0" aria-hidden="true">
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A" letter-spacing="1"><text x="30" y="300">INCIDENTS · 30 DAYS</text><text x="700" y="300">STORAGE IOPS</text></g>
+    <polyline fill="none" stroke="#F2C94C" stroke-width="3" points="30,420 90,400 150,430 210,380 270,392 330,350 390,372 450,330 510,318 570,340 630,300"/>
+    <polyline fill="none" stroke="#3A3A37" stroke-width="2" stroke-dasharray="4 6" points="30,440 630,440"/>
+    <g fill="#F2C94C"><rect x="700" y="380" width="22" height="60"/><rect x="732" y="350" width="22" height="90"/><rect x="764" y="395" width="22" height="45"/><rect x="796" y="330" width="22" height="110"/><rect x="828" y="360" width="22" height="80"/><rect x="860" y="320" width="22" height="120"/><rect x="892" y="400" width="22" height="40"/><rect x="924" y="345" width="22" height="95"/><rect x="956" y="370" width="22" height="70"/><rect x="988" y="310" width="22" height="130"/><rect x="1020" y="355" width="22" height="85"/><rect x="1052" y="335" width="22" height="105"/><rect x="1084" y="385" width="22" height="55"/><rect x="1116" y="325" width="22" height="115"/><rect x="1148" y="300" width="22" height="140"/><rect x="1180" y="340" width="22" height="100"/><rect x="1212" y="372" width="22" height="68"/></g>
+    <line x1="700" y1="440.5" x2="1250" y2="440.5" stroke="#3A3A37"/>
+  </svg>
+  <h1 class="big" style="font-size:120px">Ten metrics,<br><em>one dashboard.</em></h1>
+</section>
+
+<!-- 3 · 2023 · PISA · 800x1000 -->
+<section class="card" style="--acc:#FF6B4A;width:800px;height:1000px" data-ar="0.8">
+  <div class="head mono"><span><b>pisa</b> · politecnico indian students</span><span>round 4 · board 1</span></div>
+  <div class="board" id="board"></div>
+  <h1 class="big" style="font-size:118px">400 players,<br><em>one weekend.</em></h1>
+  <div class="tag"><span class="mono">sponsor</span><b>Red Bull</b></div>
+</section>
+
+<!-- 4 · 2024 · FISU Games · 1280x720 -->
+<section class="card" style="--acc:#4ADE80;width:1280px;height:720px" data-ar="1.7778">
+  <div class="head mono"><span><b>torino 2025</b> · fisu world university games</span><span>logistics · pre-event inspection</span></div>
+  <svg viewBox="0 0 1280 720" width="1280" height="720" style="position:absolute;inset:0" aria-hidden="true">
+    <g fill="none" stroke="#2C2C29" stroke-width="1">
+      <path d="M0 220c200-40 320 60 520 20s300-120 520-60 240 10 240 10"/><path d="M0 330c160 60 360-20 560 30s280 110 480 40 240-40 240-40"/><path d="M200 0c-20 120 60 260 20 420s-40 300-40 300"/><path d="M700 0c40 160-60 300-20 460s60 260 60 260"/>
+    </g>
+    <g fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-dasharray="8 8"><path d="M210 180L480 260L760 150L980 330L1120 220"/></g>
+    <g>
+      <g transform="translate(210 180)"><circle r="9" fill="#4ADE80"/><circle r="22" fill="none" stroke="#4ADE80" opacity=".4"/><text x="-14" y="52" font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">VENUE 01</text></g>
+      <g transform="translate(480 260)"><circle r="9" fill="#4ADE80"/><circle r="22" fill="none" stroke="#4ADE80" opacity=".4"/><text x="-14" y="52" font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">VENUE 02</text></g>
+      <g transform="translate(760 150)"><circle r="9" fill="#4ADE80"/><circle r="22" fill="none" stroke="#4ADE80" opacity=".4"/><text x="-14" y="52" font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">VENUE 03</text></g>
+      <g transform="translate(980 330)"><circle r="9" fill="#4ADE80"/><circle r="22" fill="none" stroke="#4ADE80" opacity=".4"/><text x="-14" y="52" font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">VENUE 04</text></g>
+      <g transform="translate(1120 220)"><circle r="9" fill="#4ADE80"/><circle r="22" fill="none" stroke="#4ADE80" opacity=".4"/><text x="-14" y="52" font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">VENUE 05</text></g>
+    </g>
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A" letter-spacing="1"><text x="30" y="430">CHECKLIST</text></g>
+    <g font-family="Geist Mono" font-size="14" fill="#BDBDB8"><text x="30" y="460">[x] access routes</text><text x="30" y="486">[x] power + comms</text><text x="30" y="512">[x] crowd flow</text><text x="30" y="538" fill="#4ADE80">[ ] day-of execution</text></g>
+  </svg>
+  <h1 class="big" style="font-size:120px">Five venues,<br><em>one route.</em></h1>
+</section>
+
+<!-- 5 · 2025 · OpenSky VR · 1280x720 -->
+<section class="card" style="--acc:#7C9CFF;width:1280px;height:720px" data-ar="1.7778">
+  <div class="head mono"><span><b>openskyvr</b> · property platform · react + angular</span><span>matterport · lidar · 360°</span></div>
+  <svg viewBox="0 0 1280 720" width="1280" height="720" style="position:absolute;inset:0" aria-hidden="true">
+    <g transform="translate(640 120)">
+      <!-- isometric floorplan -->
+      <g fill="none" stroke="#7C9CFF" stroke-width="2">
+        <path d="M0 0l420 210-420 210-420-210z"/>
+        <path d="M0 0v-70l420 210v70M420 210v70M-420 210v-70L0-70M0 420v-70l-420-140M0 350l420-140"/>
+        <path d="M-140 70l280 140M-280 140l140-70M140 70l140 140M-60 240l200-100M0 280l100 50"/>
+      </g>
+      <g fill="#7C9CFF" opacity=".9">
+        <circle cx="-120" cy="150" r="4"/><circle cx="60" cy="110" r="4"/><circle cx="200" cy="220" r="4"/><circle cx="-40" cy="300" r="4"/><circle cx="120" cy="170" r="4"/><circle cx="-220" cy="200" r="4"/><circle cx="-90" cy="90" r="4"/><circle cx="270" cy="150" r="4"/>
+      </g>
+      <g font-family="Geist Mono" font-size="12" fill="#CFCFCA" letter-spacing="1">
+        <text x="-250" y="220">LIVING · 34 m²</text><text x="90" y="110">KITCHEN · 12 m²</text><text x="-40" y="330">BEDROOM · 18 m²</text>
+      </g>
+      <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".5"><circle cx="-120" cy="150" r="18"/><circle cx="-120" cy="150" r="30"/></g>
+    </g>
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A" letter-spacing="1"><text x="30" y="110">SCAN</text><text x="30" y="140" fill="#BDBDB8" font-size="14">1,284,330 pts · 2.1 cm accuracy</text></g>
+  </svg>
+  <h1 class="big" style="font-size:120px">Walk in,<br><em>before it's built.</em></h1>
+  <div class="tag"><span class="mono">presentation time</span><b>−30%</b></div>
+</section>
+
+<!-- 6 · 2025 · MSc · 800x1000 -->
+<section class="card" style="--acc:#FAF600;width:800px;height:1000px" data-ar="0.8">
+  <div class="head mono"><span><b>polito.it</b> · engineering management</span><span>business solutions · finance</span></div>
+  <div class="formula">NPV = Σ <i>CF<sub>t</sub></i> / (1 + r)<sup>t</sup>
+IRR : NPV(r) = 0
+WACC = E/V·R<sub>e</sub> + D/V·R<sub>d</sub>·(1 − T)
+<i>EBITDA</i> margin = EBITDA / revenue</div>
+  <svg viewBox="0 0 800 1000" width="800" height="1000" style="position:absolute;inset:0" aria-hidden="true">
+    <g font-family="Geist Mono" font-size="12" fill="#5E5E5A" letter-spacing="1"><text x="30" y="320">CASH FLOW · 5Y</text></g>
+    <g>
+      <rect x="40" y="520" width="80" height="120" fill="#3A3A37"/>
+      <rect x="150" y="470" width="80" height="50" fill="#FAF600"/><rect x="260" y="430" width="80" height="90" fill="#FAF600"/><rect x="370" y="400" width="80" height="120" fill="#FAF600"/><rect x="480" y="360" width="80" height="160" fill="#FAF600"/><rect x="590" y="330" width="80" height="190" fill="#FAF600"/>
+      <line x1="30" y1="520.5" x2="770" y2="520.5" stroke="#8A8A85"/>
+      <g font-family="Geist Mono" font-size="12" fill="#5E5E5A"><text x="68" y="660">Y0</text><text x="178" y="660">Y1</text><text x="288" y="660">Y2</text><text x="398" y="660">Y3</text><text x="508" y="660">Y4</text><text x="618" y="660">Y5</text></g>
+    </g>
+    <polyline fill="none" stroke="#F2F2F2" stroke-width="2" points="80,640 190,560 300,500 410,450 520,392 630,340" stroke-dasharray="3 5"/>
+  </svg>
+  <h1 class="big" style="font-size:118px">Engineering,<br><em>plus the P&amp;L.</em></h1>
+</section>
+
+<!-- 7 · 2026 · Hackathons · 1080x480 -->
+<section class="card" style="--acc:#FF4FD8;width:1080px;height:480px" data-ar="2.25">
+  <div class="head mono"><span><b>hackathons</b> · 2026</span><span>three weekends · three podiums</span></div>
+  <div class="podium">
+    <div class="p1"><b>1st</b><span>Therness</span><small>weld defects · 1,551 samples</small></div>
+    <div class="p2"><b>2nd</b><span>Automation</span><small>supply chain risk · 1,000+ vendors</small></div>
+    <div class="p3"><b>1st</b><span>LOKI · cityX</span><small>civic intelligence · street reports</small></div>
+  </div>
+</section>
+
+<script>
+  // Team grid: ten people, one highlighted.
+  const person = '<svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-8 9a8 8 0 0 1 16 0v1H4v-1z"/></svg>';
+  document.getElementById('team').innerHTML = Array.from({ length: 10 }, (_, i) => '<span' + (i === 0 ? ' class="me"' : '') + '>' + person + '</span>').join('');
+  // Chess board: a middlegame.
+  const rows = ['r..q.rk.', 'pp..bppp', '..n.pn..', '...p....', '...P.B..', '..N.PN..', 'PP...PPP', 'R..QKB.R'];
+  const glyph = { r: '♜', q: '♛', k: '♚', b: '♝', n: '♞', p: '♟', R: '♖', Q: '♕', K: '♔', B: '♗', N: '♘', P: '♙' };
+  document.getElementById('board').innerHTML = rows.join('').split('').map(c => '<span' + (c === c.toUpperCase() && c !== '.' ? ' class="r"' : '') + '>' + (glyph[c] || '') + '</span>').join('');
+  const n = parseInt(location.hash.slice(1) || '0', 10);
+  document.querySelectorAll('.card')[n].classList.add('show');
+</script>
+</body>
+</html>

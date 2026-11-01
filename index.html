@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Abhishek Kumar. Part engineer, part machine. Engineer at the intersection of software, data and management.">
+<meta property="og:title" content="Abhishek Kumar">
+<meta property="og:description" content="Part engineer, part machine. Engineer at the intersection of software, data and management.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iamsammy-ak.github.io/portfolio2/">
+<meta property="og:image" content="https://iamsammy-ak.github.io/portfolio2/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Abhishek Kumar, half human and half machine: part engineer, part machine.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://iamsammy-ak.github.io/portfolio2/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Abhishek Kumar</title>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 300 900; font-stretch: 62% 125%; font-display: swap; src: url(assets/fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 300 900; font-stretch: 62% 125%; font-display: swap; src: url(assets/fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(assets/fonts/geist-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(assets/fonts/geist-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url(assets/fonts/geist-mono-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url(assets/fonts/geist-mono-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<style>
+/* One continuous cut: studio portrait in 3D -> machine scan -> the journey, one chapter per screen -> projects -> work with me. */
+:root {
+  --studio: #F8F8F6;   /* hero backdrop, high-key like a studio sweep */
+  --ink: #0B0B0B;      /* scan ground and the dark half of the page */
+  --paper: #F2F2F2;    /* type on ink */
+  --soft: #8A8A85;     /* secondary text */
+  --inset: max(clamp(28px, 4.5vw, 72px), env(safe-area-inset-left, 0px));   /* side edge of the projects and work sections */
+  --line: #262624;     /* hairlines on ink */
+  --signal: #FAF600;   /* the yellow: tracking, playheads, one word at a time */
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }  /* body stays transparent so the fixed field behind it shows */
+body { margin: 0; font-family: var(--sans); color: var(--paper); -webkit-font-smoothing: antialiased; }
+.gutter { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Fixed chrome */
+.chrome { position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; justify-content: space-between; align-items: last baseline; padding-top: max(18px, env(safe-area-inset-top, 0px)); pointer-events: none; mix-blend-mode: difference; color: #fff; --nav-fs: max(14px, clamp(24px, 4.16vw, 67px) * 0.5806); }
+/* Starts at the size frame() gives it at the top of the page, so the name doesn't load small and jump up once the hero starts. */
+.wordmark { font-family: var(--display); font-weight: 850; font-stretch: 112%; font-size: clamp(24px, 4.16vw, 67px); line-height: 0.9; text-transform: uppercase; letter-spacing: -0.01em; }
+.wordmark span { display: block; }
+.chrome nav { display: grid; gap: calc(var(--nav-fs, 16px) * 0.2); text-align: right; pointer-events: auto; }
+.chrome nav a { color: inherit; text-decoration: none; font-family: var(--display); font-weight: 750; font-stretch: 100%; font-size: var(--nav-fs, 16px); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase; text-underline-offset: 4px; }
+.chrome nav a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+
+/* Hero */
+.stage { height: 420vh; position: relative; }  /* 320vh of scroll for the hero: each swipe moves the animation a little */
+.hero { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--studio); -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+/* The WebGL field sits fixed behind the whole page; sections are transparent over it once it runs. */
+#gl { position: fixed; inset: 0; width: 100%; height: 100vh; display: block; z-index: -1; }
+html.gl .hero, html.gl .work { background: transparent; }
+#hud { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#hud { pointer-events: none; }
+.hero .readout, .hero .hint { position: absolute; bottom: max(20px, env(safe-area-inset-bottom, 0px)); color: #6E6E6A; line-height: 1.7; pointer-events: none; }
+.hero .readout { left: max(20px, env(safe-area-inset-left, 0px)); }
+.hero .hint { right: max(20px, env(safe-area-inset-right, 0px)); text-align: right; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* Story: scroll down, the reel moves sideways. One frame per chapter, caption underneath. */
+.story { position: relative; }
+.story-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; gap: 16px; padding-top: max(96px, calc(env(safe-area-inset-top, 0px) + 80px)); padding-bottom: max(24px, env(safe-area-inset-bottom, 0px)); }
+.story-head { display: flex; justify-content: flex-end; gap: 16px; color: var(--soft); visibility: hidden; }  /* kept for spacing only: the big outline year and the timeline show the year */
+.reel-wrap { position: relative; min-height: 0; min-width: 0; overflow: visible; display: flex; align-items: center; }
+.reel { display: flex; width: max-content; align-items: flex-start; gap: clamp(32px, 4vw, 64px); will-change: transform; padding-right: 50vw; }
+.reel-intro { flex: 0 0 auto; width: calc(min(64vw, 760px) - 0.97 * clamp(44px, 7.2vw, 118px)); display: grid; gap: 20px; }  /* placed by sizeStory: centred on the first card */
+.reel-intro h2 { margin: 0; font-family: var(--display); font-weight: 850; text-transform: uppercase; line-height: 0.86; letter-spacing: -0.015em; font-size: clamp(44px, 7.2vw, 118px); font-stretch: 82%; }
+/* JOURNEY steps right under ENGINEER, so the two words don't stack into an equal-width block. */
+.reel-intro h2 em { display: block; margin-left: 0.63em; font-style: normal; color: transparent; -webkit-text-stroke: 1.5px var(--paper); }
+/* Archive cards: one height for every era, the picture whole inside, place and tag on a slim bar.
+   Only the chapter in the middle of the screen is in full colour. */
+.frame { --stagger: clamp(14px, 4.5vh, 44px); --media-h: clamp(170px, min(42vh, 100vh - 400px - 2 * var(--stagger)), 420px);
+  transform: translateY(calc(var(--dy, 0) * var(--stagger)));  /* the stagger: --dy per chapter, in STAGGER */
+  flex: 0 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-content: start;
+  width: max(calc(var(--media-h) * var(--ar) + 18px), 250px); }
+.shot { justify-self: start; width: calc(var(--media-h) * var(--ar) + 18px); max-width: 100%; padding: 0 8px 8px; border-radius: 10px; background: #141413; border: 1px solid #2C2C29; }
+.shot .bar { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0 10px; height: 32px; color: #8A8A85; white-space: nowrap; overflow: hidden; width: 0; min-width: 100%; }
+.shot .bar > * { height: 32px; display: flex; align-items: center; }
+.shot .bar .who { gap: 10px; min-width: 0; }
+.shot .bar.tight .ic { display: none; }
+.shot .bar .h { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; height: auto; }
+.shot .bar .ic { display: flex; gap: 6px; color: #CFCFCA; }
+.shot .bar svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+.shot .bar .yr { margin-left: auto; }
+.media { height: var(--media-h); border-radius: 6px; overflow: hidden; background: #0B0B0B; }
+.media img, .media video { width: 100%; height: 100%; object-fit: contain; display: block; filter: saturate(0.2) brightness(0.72); transition: filter 450ms ease; }
+.frame.on .media img, .frame.on .media video { filter: none; }
+.cap { display: grid; gap: 6px; text-shadow: 0 0 14px #0B0B0B, 0 0 5px #0B0B0B; }  /* a dark halo keeps captions clear of the year behind */
+.cap .meta { display: flex; align-items: baseline; gap: 14px; color: var(--soft); }
+.cap .meta b { color: var(--signal); font-family: var(--display); font-weight: 800; font-stretch: 88%; font-size: clamp(30px, 2.8vw, 42px); line-height: 0.9; letter-spacing: -0.01em; }
+.cap h3 { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2vw, 30px); line-height: 0.95; letter-spacing: -0.005em; font-stretch: 88%; }
+.cap p { margin: 0; max-width: 30ch; font-size: 15px; line-height: 1.45; color: #BDBDB8; }
+/* Tall pictures (phone-shaped): the caption sits beside the image, level with its bottom. */
+.frame.tall { grid-template-columns: auto 230px; column-gap: 28px; align-items: end; width: calc(var(--media-h) * var(--ar) + 18px + 28px + 230px);
+  --media-h: calc(clamp(170px, min(42vh, 100vh - 400px - 2 * var(--stagger)), 420px) + 130px); }
+.frame.tall .cap { padding-bottom: 4px; }
+.cap p b { color: var(--paper); font-weight: 600; }
+/* Timeline: one hairline, a white fill that tracks the card in the middle, years in the display face. */
+.rail { --n: 8; display: grid; gap: 14px; }
+.rail-line { position: relative; height: 1px; background: #2C2C29; }
+.rail-fill { position: absolute; left: 0; top: -0.5px; height: 2px; width: 0; background: var(--paper); }
+/* Bachelor's to Master's: the line is dashed through the bachelor's years and solid from the master's (--ft-i, set in the script). */
+.rail { --ftx: calc(100% * var(--ft-i, 0) / var(--n)); }
+.rail-line { background: linear-gradient(90deg, #4a4a46 var(--ftx), #8A8A85 var(--ftx)); }
+.rail-line::before { content: ""; position: absolute; z-index: 1; left: 0; top: -1px; width: var(--ftx); height: 3px; background: repeating-linear-gradient(90deg, transparent 0 6px, #0B0B0B 6px 11px); }
+.ft-spans { display: grid; grid-template-columns: var(--ftx) minmax(0, 1fr); margin-bottom: -6px; font: 500 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.ft-spans span { padding: 0 0 7px 8px; border-left: 1px solid; }
+.ft-spans .pt { color: var(--soft); border-color: #4a4a46; }
+.ft-spans .fu { color: var(--signal); border-color: var(--signal); }
+.rail-steps { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.rail-steps li { position: relative; display: grid; gap: 4px; padding-top: 2px; min-width: 0; }
+.rail-steps li::before { content: ""; position: absolute; left: 0; top: -21px; width: 1px; height: 13px; background: #3A3A37; transition: background 300ms; }
+.rail-steps .y { font-family: var(--display); font-weight: 750; font-size: 15px; line-height: 1; color: #5E5E5A; transition: color 300ms; }
+.rail-steps .t { font-size: 13px; color: #5E5E5A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 300ms; }
+.rail-steps li.done .y, .rail-steps li.done .t { color: #8A8A85; }
+.rail-steps li.on .y { color: var(--paper); }
+.rail-steps li.on .t { color: #CFCFCA; }
+.rail-steps li.on::before, .rail-steps li.done::before { background: var(--paper); }
+@media (max-width: 1240px) { .rail-steps .t { white-space: normal; line-height: 1.2; padding-right: 6px; } }
+
+/* Projects */
+.today { padding-block: clamp(72px, 8.6vw, 124px) clamp(64px, 8vw, 96px); padding-inline: var(--inset); border-top: 1px solid var(--line); }
+.today h2 { margin: 0; font-family: var(--display); font-weight: 850; text-transform: uppercase; line-height: 0.86; letter-spacing: -0.015em; font-size: max(min(7.2vw, 118px), min(30px, (100vw - 2 * var(--inset)) / 10.6)); font-stretch: 80%; }
+.channels { margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line); background: rgba(11, 11, 11, 0.82);
+  margin-inline: calc(-1 * var(--inset)); padding-inline: var(--inset); }  /* band runs full width, rows on the section edge */
+.ch { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr); gap: 12px 48px; padding-block: clamp(24px, 2.6vw, 36px); border-bottom: 1px solid var(--line); align-items: center; text-decoration: none; color: inherit; }
+.ch h3 { margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 85%; text-transform: uppercase; font-size: clamp(30px, 3.8vw, 60px); line-height: 0.92; letter-spacing: -0.005em; white-space: nowrap; transition: transform 400ms cubic-bezier(.2,.7,.2,1), color 200ms; }
+.ch:hover h3 { transform: translateX(12px); color: var(--signal); }
+.ch p { margin: 0; color: #E2E2DD; font-size: clamp(17px, 1.5vw, 22px); line-height: 1.45; max-width: 42ch; min-width: 0; }
+.ch .who { display: grid; gap: 10px; min-width: 0; }
+.ch .name { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.ch .handle { font: 500 15px var(--sans); color: #9A9A95; }
+.ch .handle b { color: var(--signal); font-weight: 600; }
+.ch .plat { color: inherit; transition: color 200ms; padding: 8px; margin: -8px; }  /* 44px to tap, 28px to see */
+.ch .plat:hover, .ch .plat:focus-visible { color: var(--signal); }
+.ch .where { display: flex; align-items: center; gap: 18px; color: #E2E2DD; }
+.ch .plat svg { display: block; width: 28px; height: 28px; fill: currentColor; }
+.ch:hover .where { color: var(--paper); }
+@media (max-width: 760px) { .ch { grid-template-columns: 1fr; } .ch h3 { white-space: normal; } }
+
+/* Work with me */
+.work { background: var(--studio); color: var(--ink); padding-block: clamp(96px, 12vw, 160px); padding-inline: var(--inset); }
+.offers { border-top: 1px solid #CFCFCA; }
+.offer { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 14px 48px; align-items: start; padding-block: clamp(24px, 3vw, 40px); border-bottom: 1px solid #CFCFCA; }
+.offer .num { grid-column: 1; grid-row: 1; }
+.offer h3 { grid-column: 1; grid-row: 2; }
+.offer .body { grid-column: 2; grid-row: 2; padding-top: 2px; }
+.offer .num { color: #6E6E6A; }
+.offers { container-type: inline-size; }
+.offer h3 { margin: 0; font-family: var(--display); font-weight: 850; font-stretch: 80%; text-transform: uppercase; font-size: clamp(30px, calc((100cqw - 48px) * 0.6 / 10.6), 104px); line-height: 0.86; letter-spacing: -0.015em; white-space: nowrap; transition: transform 400ms cubic-bezier(.2,.7,.2,1); }
+.offer:hover h3 { transform: translateX(12px); }
+.offer .body { display: grid; gap: 12px; }
+.offer p { margin: 0; font-size: 17px; line-height: 1.5; color: #3A3A37; max-width: 40ch; }
+.offer .proof { color: #6E6E6A; line-height: 1.7; }
+@media (max-width: 860px) { .offer { grid-template-columns: 1fr; } .offer .body { grid-column: 1; grid-row: 3; } .offer h3 { font-size: clamp(22px, calc(100cqw / 10.6), 72px); } }
+/* Organisations: wordmarks in one colour, sliding past on a loop; hover holds it still. */
+.brands { margin-top: clamp(64px, 8vw, 104px); display: grid; gap: 28px; }
+.brands .label { color: #6E6E6A; margin: 0; }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.track { display: flex; align-items: center; width: max-content; margin: 0; padding: 0; list-style: none; animation: marquee 48s linear infinite; }
+.logo { flex: 0 0 auto; height: calc(clamp(24px, 2.4vw, 36px) * var(--h, 1)); margin-right: clamp(56px, 7vw, 112px); color: var(--ink); display: flex; align-items: center; }
+.logo svg { display: block; height: 100%; width: auto; }
+.logo svg * { fill: currentColor; stroke: none; }
+.logo .wm { font-family: var(--display); font-weight: 850; font-stretch: 90%; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1; white-space: nowrap; font-size: calc(clamp(24px, 2.4vw, 36px) * var(--h, 1)); }
+.logo .wm.wide { font-stretch: 112%; letter-spacing: 0.02em; }
+.logo .wm.narrow { font-stretch: 70%; }
+.logo .wm.light { font-weight: 500; letter-spacing: 0.06em; }
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+/* Arrivals, set up by JS only when motion is allowed (html.anim): headings rise from behind their own edge and
+   hairlines draw left to right, each once as it scrolls into view. */
+html.anim .rise { overflow: hidden; padding-block: 0.08em; margin-block: -0.08em; }
+html.anim .rise > span { display: inline-block; transform: translateY(110%); transition: transform 1000ms cubic-bezier(.2,.7,.2,1); }
+html.anim .rise.in > span { transform: none; }
+html.anim .channels, html.anim .offers { border-top-color: transparent; position: relative; }
+html.anim .ch, html.anim .offer { border-bottom-color: transparent; position: relative; }
+html.anim .channels::before, html.anim .offers::before, html.anim .ch::after, html.anim .offer::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; transform: scaleX(0); transform-origin: left; transition: transform 1600ms cubic-bezier(.3,.6,.2,1); pointer-events: none; }
+html.anim .channels::before { top: -1px; background: var(--line); }
+html.anim .ch::after { bottom: -1px; background: var(--line); }
+html.anim .offers::before { top: -1px; background: #CFCFCA; }
+html.anim .offer::after { bottom: -1px; background: #CFCFCA; }
+html.anim .in::before, html.anim .in::after { transform: none; }
+
+/* Phones: past the hero, a soft blur behind the name and menu so headings scrolling under them stay readable. */
+.topblur { position: fixed; top: 0; left: 0; right: 0; height: 84px; z-index: 19; pointer-events: none; opacity: 0; transition: opacity 300ms;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
+@media (max-width: 760px) {
+  .hero .hint { bottom: calc(100vh - 100svh + max(20px, env(safe-area-inset-bottom, 0px))); }
+  .hero .readout { display: none; }
+}
+/* Story as cards you scroll down through: phones, any portrait screen, and short landscape screens. STACK_Q in the script matches this. */
+@media (max-width: 760px), (orientation: portrait), (max-height: 500px) and (orientation: landscape) {
+  html.past-hero .topblur { opacity: 1; }
+  .story-head { display: none; }
+  .story { height: auto !important; }
+  .story-pin { position: relative; height: auto; overflow: visible; padding-bottom: 56px; }
+  .reel-wrap { display: block; }
+  .reel { flex-direction: column; align-items: stretch; width: auto; gap: 44px; padding-right: 0; transform: none !important; }
+  .reel-intro { width: auto; }
+  .frame, .frame.tall { width: auto; grid-template-columns: minmax(0, 1fr); transform: none; }
+  .frame .cap { order: -1; }
+  .shot { width: fit-content; max-width: 100%; }
+  .media { height: min(68vh, calc((100vw - 58px) / var(--ar))); width: auto; aspect-ratio: var(--ar); }
+  .rail { display: none; }
+}
+/* Phones: the journey swipes sideways instead of stacking down the page. */
+@media (max-width: 760px) {
+  .story-pin { display: block; padding-bottom: 0; }
+  .today { padding-top: 40px; }
+  .channels { margin-top: 26px; }
+  .today h2 { font-size: max(28px, min(calc((100vw - 2 * var(--inset)) / 10.7), 40px)); }
+  .reel-intro { margin-bottom: 28px; }
+  .reel-wrap { display: block; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
+    margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); padding-inline: max(20px, env(safe-area-inset-left, 0px)); scroll-padding-inline: max(20px, env(safe-area-inset-left, 0px)); }
+  .reel-wrap::-webkit-scrollbar { display: none; }
+  .reel { flex-direction: row; align-items: flex-start; width: max-content; gap: 14px; }
+  .frame, .frame.tall { width: fit-content; grid-template-columns: minmax(0, 1fr); scroll-snap-align: start; }
+  .frame .cap { order: 0; width: 0; min-width: 100%; }
+  .media { --mh: min(52svh, 440px); height: auto; width: min(calc(var(--mh) * var(--ar)), calc(100vw - 72px)); aspect-ratio: var(--ar); }
+  .frame:first-of-type .media { width: calc(0.9 * min(calc(var(--mh) * var(--ar)), calc(100vw - 72px))); }
+  .rail { display: block; margin-top: 16px; }
+  .rail-steps { display: none; }
+}
+/* A phone on its side: the cards are short, so each caption sits beside its card instead of under it. */
+@media (max-height: 500px) and (orientation: landscape) and (min-width: 780px) {
+  .frame, .frame.tall { grid-template-columns: auto minmax(0, 1fr); column-gap: 28px; align-items: end; }
+  .frame .cap { padding-bottom: 4px; order: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .track { animation: none; flex-wrap: wrap; width: auto; row-gap: 28px; } .track .logo.copy { display: none; } }
+/* Bottom of Work with me: get in touch on the left, the CV level with it on the right. */
+.reach { margin-top: clamp(64px, 8vw, 104px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 48px; align-items: start; }
+@media (max-width: 760px) { .reach { grid-template-columns: minmax(0, 1fr); gap: 56px; } .reach .signup { justify-self: stretch; text-align: left; width: auto; } .reach .signup .note { margin-left: 0; } .reach .signup .field { justify-content: flex-start; } }
+.contact { display: grid; gap: 14px; }
+.contact .addr { font-family: var(--display); font-weight: 800; font-stretch: 96%; font-size: clamp(min(22px, 5.4vw), 2.55vw, 38px); line-height: 0.95; letter-spacing: -0.02em; word-break: break-word; user-select: all; }
+.contact .addr a { color: inherit; text-decoration: none; }
+.contact button { justify-self: start; font: 500 14px var(--sans); padding: 12px 18px; border-radius: 0; border: 1px solid var(--ink); background: var(--ink); color: var(--studio); cursor: pointer; transition: background 250ms, color 250ms, border-color 250ms; }
+.contact button.copied { background: var(--signal); border-color: var(--signal); color: var(--ink); }
+.contact button:focus-visible, a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+.signup { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0; justify-self: end; text-align: right; width: min(100%, 520px); }
+.signup .title { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3.2vw, 46px); line-height: 0.95; letter-spacing: -0.02em; }
+.signup .field { display: flex; justify-content: flex-end; }
+.signup .field a { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid var(--ink); background: var(--ink); color: var(--studio); font: 500 14px var(--sans); text-decoration: none; transition: background 250ms, color 250ms; }
+.signup .field a:hover { background: var(--signal); border-color: var(--signal); color: var(--ink); }
+.signup .field a svg { width: 16px; height: 16px; fill: currentColor; }
+.signup .note { margin: 0 0 0 auto; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #6E6E6A; }
+footer { padding-block: 32px max(32px, env(safe-area-inset-bottom, 0px)); padding-inline: var(--inset); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--soft); border-top: 1px solid var(--line); }
+footer > span:last-child { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+footer a { color: inherit; text-decoration: none; }
+footer a:hover { color: var(--paper); }
+</style>
+</head>
+<body>
+
+<canvas id="gl" aria-label="Portrait of Abhishek Kumar in 3D. A tracking lens reveals a machine view of his face."></canvas>
+<div class="topblur" aria-hidden="true"></div>
+<header class="chrome gutter">
+  <div class="wordmark" id="wordmark" aria-label="Abhishek Kumar"><span>Abhishek</span><span>Kumar</span></div>
+  <nav aria-label="Main"><a href="#story">Story</a><a href="#today">Projects</a><a href="#work">Work with me</a></nav>
+</header>
+
+<div class="stage" id="top">
+  <div class="hero">
+    <canvas id="hud" aria-hidden="true"></canvas>
+    <div class="readout mono" id="readout">Face mesh · 478 pts<br>Tracking</div>
+    <div class="hint mono" id="hint">Move to reveal<br>Scroll to go deeper</div>
+    <script>if (matchMedia('(hover: none)').matches) document.getElementById('hint').innerHTML = 'Tap to scan<br>Scroll to go deeper';</script>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="story-pin gutter">
+    <div class="story-head mono"><span id="chapter-count">2022</span></div>
+    <div class="reel-wrap"><div class="reel" id="reel">
+      <div class="reel-intro">
+        <h2>Engineer <em>journey.</em></h2>
+      </div>
+    </div></div>
+    <div class="rail" aria-hidden="true">
+      <div class="rail-line"><div class="rail-fill" id="railFill"></div></div>
+      <ol class="rail-steps" id="railSteps"></ol>
+    </div>
+  </div>
+</section>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1.6 2L12 12.3 20.4 6H3.6zM3 8.2V18h18V8.2l-9 6.6-9-6.6z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></symbol>
+  <symbol id="i-cv" viewBox="0 0 24 24"><path d="M6 2h8l6 6v14H6V2zm7 1.5V9h5.5L13 3.5zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></symbol>
+  <symbol id="i-edu" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-7 9.7V17c0 2 3.1 4 7 4s7-2 7-4v-4.3l-7 3.8-7-3.8z"/></symbol>
+  <symbol id="i-work" viewBox="0 0 24 24"><path d="M10 4h4a2 2 0 0 1 2 2v2h5v12H3V8h5V6a2 2 0 0 1 2-2zm0 2v2h4V6h-4zM5 10v8h14v-8h-3v2h-2v-2H10v2H8v-2H5z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 2h10v2h4v4a5 5 0 0 1-4.4 4.96A6 6 0 0 1 13 16.9V19h4v2H7v-2h4v-2.1a6 6 0 0 1-3.6-3.94A5 5 0 0 1 3 8V4h4V2zm-2 4v2a3 3 0 0 0 2 2.83V6H5zm14 0h-2v4.83A3 3 0 0 0 19 8V6z"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 19a6 6 0 0 1 12 0v1H2v-1zm13 1v-1a7.9 7.9 0 0 0-1.6-4.8A6 6 0 0 1 22 19v1h-7z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 9h-3a15.5 15.5 0 0 0-1.3-5.6A8 8 0 0 1 18.9 11zM12 4.1c.9 1 2.3 3.3 2.8 6.9H9.2c.5-3.6 1.9-5.9 2.8-6.9zM5.1 13h3c.1 2.1.6 4 1.3 5.6A8 8 0 0 1 5.1 13zm3-2h-3a8 8 0 0 1 4.3-5.6A15.5 15.5 0 0 0 8.1 11zm3.9 8.9c-.9-1-2.3-3.3-2.8-6.9h5.6c-.5 3.6-1.9 5.9-2.8 6.9zm2.6-1.3c.7-1.6 1.2-3.5 1.3-5.6h3a8 8 0 0 1-4.3 5.6z"/></symbol>
+</svg>
+
+<section class="today gutter" id="today">
+  <h2>What I've built.</h2>
+  <div class="channels">
+    <div class="ch"><div class="who"><div class="name"><h3>cityX</h3><div class="where"><a class="plat" href="https://github.com/iamsammy-ak" target="_blank" rel="noopener" aria-label="cityX on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a></div></div><span class="handle"><b>1st place</b> · LOKI Urban Monitoring Hackathon · Oct 2026</span></div><p>An AI civic-intelligence platform that turns street reports into actionable incidents: classification, geospatial analysis, duplicate detection and risk-based prioritisation, with privacy safeguards built in.</p></div>
+    <div class="ch"><div class="who"><div class="name"><h3>Weld inspector</h3><div class="where"><a class="plat" href="https://github.com/iamsammy-ak" target="_blank" rel="noopener" aria-label="Weld inspector on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a></div></div><span class="handle"><b>1st place</b> · Therness Hackathon · Feb 2026</span></div><p>1,551 welding samples across thermal video, audio and sensor data, fused to detect and classify six categories of defect.</p></div>
+    <div class="ch"><div class="who"><div class="name"><h3>Supply chain risk</h3><div class="where"><a class="plat" href="https://github.com/iamsammy-ak" target="_blank" rel="noopener" aria-label="Supply chain risk platform on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a></div></div><span class="handle"><b>2nd place</b> · Automation Hackathon · Mar 2026</span></div><p>Built in five hours: supplier intelligence for 1,000+ vendors, with ScrapeGraphAI and LLMs flagging the geopolitical, weather and logistics risks on each cargo route.</p></div>
+    <div class="ch"><div class="who"><div class="name"><h3>3D property tours</h3><div class="where"><a class="plat" href="https://www.linkedin.com/in/sammy4bhishek/" target="_blank" rel="noopener" aria-label="OpenSky VR work on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></div></div><span class="handle">OpenSky VR Italia · 2025</span></div><p>A property visualisation platform in React and Angular over REST APIs, Matterport and LiDAR, for interactive walkthroughs and VR previews. Presentation time down about 30%; MVP shipped in six months with a team of six.</p></div>
+    <div class="ch"><div class="who"><div class="name"><h3>Service dashboards</h3><div class="where"><a class="plat" href="https://www.linkedin.com/in/sammy4bhishek/" target="_blank" rel="noopener" aria-label="Fibzio work on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></div></div><span class="handle">Fibzio · 2023 to 2024</span></div><p>MS SQL and PostgreSQL queries feeding Power BI dashboards for 10+ service metrics, SLA adherence and incident trends. Reporting turnaround down 40%, incidents down 20%.</p></div>
+    <div class="ch"><div class="who"><div class="name"><h3>Chess, 400 players</h3><div class="where"><a class="plat" href="https://www.linkedin.com/in/sammy4bhishek/" target="_blank" rel="noopener" aria-label="PISA on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></div></div><span class="handle">Politecnico Indian Students Association · President since 2023</span></div><p>A Red Bull-sponsored tournament with 400+ participants: budget, sponsorship, logistics and teams, for an association reaching 1,000+ students.</p></div>
+  </div>
+</section>
+
+<section class="work gutter" id="work">
+  <div class="offers">
+    <article class="offer"><span class="num mono">01</span><h3>Engineering</h3><div class="body"><p>Products from first prototype to shipped MVP: Python, React, Angular, REST APIs, AI/ML pipelines and 3D or VR tooling.</p><p class="proof mono">React · Angular · Python · Docker · Matterport · LiDAR</p></div></article>
+    <article class="offer"><span class="num mono">02</span><h3>Data &amp; analytics</h3><div class="body"><p>SQL pipelines, Power BI dashboards and FP&amp;A models that cut reporting time and show what actually moves the numbers.</p><p class="proof mono">SQL · PostgreSQL · Power BI · Excel · MATLAB</p></div></article>
+    <article class="offer"><span class="num mono">03</span><h3>Project management</h3><div class="body"><p>Cross-functional delivery at any scale, from a six-person startup team to a 400-player sponsored event: scope, budget, partners and logistics.</p><p class="proof mono">JIRA · Trello · Notion · Asana · Figma</p></div></article>
+  </div>
+  <div class="brands">
+    <p class="mono label">Organisations I've worked with</p>
+    <div class="marquee" role="img" aria-label="Politecnico di Torino, OpenSky VR, Fibzio, AIESEC, Red Bull, Torino 2025 FISU Games, McKinsey, LVMH, Harvard CS50, Therness"><ul class="track">
+<li class="logo" style="--h:0.95" title="Politecnico di Torino"><span class="wm">Politecnico di Torino</span></li>
+<li class="logo" style="--h:1.0" title="OpenSky VR"><span class="wm wide">OpenSky VR</span></li>
+<li class="logo" style="--h:1.0" title="Fibzio"><span class="wm light">Fibzio</span></li>
+<li class="logo" style="--h:0.95" title="AIESEC"><span class="wm wide">AIESEC</span></li>
+<li class="logo" style="--h:1.0" title="Red Bull"><span class="wm narrow">Red Bull</span></li>
+<li class="logo" style="--h:0.9" title="Torino 2025 FISU Games"><span class="wm">Torino 2025</span></li>
+<li class="logo" style="--h:0.9" title="McKinsey Forward"><span class="wm light">McKinsey</span></li>
+<li class="logo" style="--h:1.0" title="LVMH"><span class="wm wide">LVMH</span></li>
+<li class="logo" style="--h:0.9" title="Harvard CS50"><span class="wm">CS50</span></li>
+<li class="logo" style="--h:0.9" title="Therness"><span class="wm narrow">Therness</span></li>
+</ul></div>
+  </div>
+  <div class="reach">
+    <div class="contact">
+      <p class="mono" style="color:#6E6E6A;margin:0">Get in touch</p>
+      <span class="addr" id="email"><a href="mailto:kumarabhishekk363@gmail.com">kumarabhishekk363@gmail.com</a></span>
+      <button type="button" id="copy">Copy email</button>
+    </div>
+    <div class="signup">
+      <p class="mono" style="color:#6E6E6A;margin:0">Résumé</p>
+      <p class="title">The full story on one page</p>
+      <div class="field">
+        <a href="assets/cv/Abhishek_Kumar_CV.pdf" download="Abhishek_Kumar_CV.pdf"><svg aria-hidden="true"><use href="#i-cv"/></svg>Download CV</a>
+      </div>
+      <p class="note">PDF, one page. Turin, Italy. Hindi, English and a little Italian.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="mono">
+  <span>Abhishek Kumar</span>
+  <span><a href="https://github.com/iamsammy-ak" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/sammy4bhishek/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:kumarabhishekk363@gmail.com">Email</a><a href="assets/cv/Abhishek_Kumar_CV.pdf">CV</a></span>
+</footer>
+
+<script src="assets/hero/hero-data.js"></script>
+<script>
+const IMG_SRC = "assets/hero/face.webp";
+const DEPTH_SRC = "assets/hero/depth.webp";
+const MACHINE_SRC = "assets/hero/machine.webp";
+// MESH (478 face-mesh points of the portrait, as [x, y] fractions of the image) comes from assets/hero/hero-data.js.
+const HEAD_L = "PART", HEAD_L2 = "ENGINEER.", HEAD_R = "PART", HEAD_R2 = "MACHINE.";
+
+/* ---------- Journey: vertical scroll drives a sideways reel ---------- */
+const CHAPTERS = [
+  { year: "2022", platform: "Politecnico di Torino", handle: "polito.it", icons: ["edu"], title: "Computer engineering", ar: 4 / 5, img: "assets/story/2022-polito.webp", line: "Where it started. A one-way ticket to Turin and <b>a computer engineering degree</b>." },
+  { year: "2022", platform: "AIESEC", handle: "aiesec.org", icons: ["team"], title: "Marketing manager", ar: 16 / 9, img: "assets/story/2022-aiesec.webp", line: "First team of my own: <b>ten volunteers</b>, event logistics and campaign numbers." },
+  { year: "2023", platform: "Fibzio", handle: "fibzio", icons: ["work"], title: "Junior data analyst", ar: 16 / 9, img: "assets/story/2023-fibzio.webp", line: "SQL by day, Power BI by night. <b>Reporting 40% faster</b>, incidents down 20%." },
+  { year: "2023", platform: "PISA", handle: "pisa.polito", icons: ["team"], title: "President", ar: 4 / 5, img: "assets/story/2023-pisa.webp", line: "Elected to lead the Indian students' association: <b>1,000+ students</b>, one Red Bull chess tournament." },
+  { year: "2024", platform: "Torino 2025 FISU Games", handle: "fisu.net", icons: ["globe"], title: "Logistics coordinator", ar: 16 / 9, img: "assets/story/2024-fisu.webp", line: "<b>Five venues</b>, pre-event inspections and on-site execution for the World University Games." },
+  { year: "2025", platform: "OpenSky VR Italia", handle: "openskyvr", icons: ["work"], title: "Technical management trainee", ar: 16 / 9, img: "assets/story/2025-opensky.webp", line: "<b>3D walkthroughs and VR previews</b> of real property. An MVP in six months with a team of six." },
+  { year: "2025", platform: "Politecnico di Torino", handle: "polito.it", icons: ["edu"], title: "Engineering management", ar: 4 / 5, img: "assets/story/2025-msc.webp", line: "The master's: <b>business solutions and finance</b> on top of the engineering." },
+  { year: "2026", platform: "Hackathons", handle: "three podiums", icons: ["trophy"], title: "Built in a weekend", ar: 1080 / 480, img: "assets/story/2026-hackathons.webp", line: "Weld defects, supply chain risk, civic intelligence. <b>Two firsts and a second</b>." }
+];
+// How far each card sits above (-) or below (+) the line, in steps of --stagger. Varied, not a strict zig-zag; the last card lands on the line.
+const STAGGER = [-1, 0.6, -1, 1, -0.6, 0.8, -0.8, 0];
+// The story's year, drawn huge into a hidden canvas; the 0s-and-1s field behind the reel types it out.
+const yearState = { a: 0, b: 0, mix: 0, clear: 0 };
+const story = document.getElementById('story');
+// Logo strip loops seamlessly: the set is doubled and the track slides by half its width.
+const logoTrack = document.querySelector('.track');
+logoTrack.append(...[...logoTrack.children].map(n => { const c = n.cloneNode(true); c.classList.add('copy'); return c; }));
+const reel = document.getElementById('reel');
+CHAPTERS.forEach((c, i) => {
+  const f = document.createElement('figure');
+  f.className = c.ar < 0.75 ? 'frame tall' : 'frame'; f.style.margin = '0'; f.style.setProperty('--ar', c.ar); f.style.setProperty('--dy', STAGGER[i] || 0);
+  const alt = c.platform + ', ' + c.title + ', ' + c.year;
+  const media = c.video
+    ? '<video src="' + c.video + '" poster="' + c.img + '" muted loop playsinline preload="metadata" aria-label="' + alt + '"></video>'
+    : '<img src="' + c.img + '" alt="' + alt + '" decoding="async">';
+  f.innerHTML = '<div class="shot"><div class="bar mono"><span class="who"><span class="ic">' + c.icons.map(i => '<svg aria-hidden="true"><use href="#i-' + i + '"/></svg>').join('') + '</span><span class="h">' + c.handle + '</span></span><span class="yr">' + c.year + '</span></div><div class="media">' + media + '</div></div>' +
+    '<figcaption class="cap"><div class="meta mono"><b>' + c.year + '</b><span>' + c.platform + '</span></div><h3>' + c.title + '</h3><p>' + c.line + '</p></figcaption>';
+  reel.appendChild(f);
+});
+const railSteps = document.getElementById('railSteps'), railFill = document.getElementById('railFill');
+railSteps.parentNode.style.setProperty('--n', CHAPTERS.length);
+CHAPTERS.forEach(c => { const li = document.createElement('li'); li.innerHTML = '<span class="y">' + c.year + '</span><span class="t">' + c.title + '</span>'; railSteps.appendChild(li); });
+// Where the master's starts: the timeline turns from dashed to solid here (see the .rail CSS).
+const FT_AT = CHAPTERS.findIndex(c => c.title === 'Engineering management');
+railSteps.parentNode.style.setProperty('--ft-i', FT_AT);
+railSteps.parentNode.insertAdjacentHTML('afterbegin', '<div class="ft-spans" aria-hidden="true"><span class="pt">Bachelor\'s</span><span class="fu">Master\'s</span></div>');
+const clips = [...railSteps.children];
+const frames = [...reel.querySelectorAll('.frame')];
+let reelSpan = 0, storyRef = 0;
+const STACK_Q = matchMedia('(max-width: 760px), (orientation: portrait), (max-height: 500px) and (orientation: landscape)');  // story stacked (see the CSS)
+const SWIPE_Q = matchMedia('(max-width: 760px)');  // phones: the stacked story becomes a sideways swipe (see the CSS)
+// Hero scroll beats on hero progress P: the rise runs BEAT[0] to BEAT[1], the sweep BEAT[1] to BEAT[2], the burn BEAT[2] to BEAT[3].
+const BEAT = [0.1, 0.35, 0.53, 0.72];
+const capCtx = document.createElement('canvas').getContext('2d');
+const STORY_IN = 0.4;  // how far through the burn the story's headline enters the bottom of the screen
+function sizeStory() {
+  const baselineAt = put => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; put(m); const y = m.getBoundingClientRect().top; m.remove(); return y; };
+  // A card's top bar drops its icons when the tag wouldn't fit beside them.
+  frames.forEach(f => { const bar = f.querySelector('.bar'), h = bar.querySelector('.h'); bar.classList.remove('tight'); if (h.scrollWidth > h.clientWidth + 1) bar.classList.add('tight'); });
+  // Upright cards: the caption column beside the picture hugs its longest line (up to 230px).
+  frames.forEach(f => {
+    if (!f.classList.contains('tall')) return;
+    f.style.removeProperty('width'); f.style.removeProperty('grid-template-columns');
+    if (STACK_Q.matches) return;
+    const cap = f.querySelector('.cap'), left = cap.getBoundingClientRect().left, r = document.createRange();
+    let w = 0;
+    cap.querySelectorAll('.meta > *, h3, p').forEach(el => { r.selectNodeContents(el); for (const b of r.getClientRects()) w = Math.max(w, b.right - left); });
+    w = Math.min(230, Math.ceil(w) + 2);
+    f.style.gridTemplateColumns = 'auto ' + w + 'px';
+    f.style.width = 'calc(var(--media-h) * var(--ar) + 18px + 28px + ' + w + 'px)';
+  });
+  // Phones: each wide card drops so the last line of its caption sits level with the bottom of the card to its left.
+  frames.forEach((f, i) => {
+    f.style.marginTop = '0';
+    if (!SWIPE_Q.matches || !i || CHAPTERS[i].ar <= 1) return;
+    const drop = frames[i - 1].querySelector('.shot').getBoundingClientRect().bottom - baselineAt(m => f.querySelector('.cap p').appendChild(m));
+    if (drop > 0) f.style.marginTop = drop + 'px';
+  });
+  // Phones: the switch sits where the swipe reaches the master's card.
+  { const rail = railSteps.parentNode, wrap = reel.parentElement, room = wrap.scrollWidth - wrap.clientWidth;
+    if (SWIPE_Q.matches && room > 0) rail.style.setProperty('--ftx', Math.min(100, (frames[FT_AT].offsetLeft - (parseFloat(getComputedStyle(wrap).paddingLeft) || 0)) / room * 100) + '%');
+    else rail.style.removeProperty('--ftx'); }
+  const last = frames[frames.length - 1];
+  reelSpan = Math.max(0, reel.parentElement.getBoundingClientRect().left + last.offsetLeft + last.offsetWidth / 2 - innerWidth / 2);
+  storyRef = reel.parentElement.getBoundingClientRect().left + frames[0].offsetLeft + frames[0].offsetWidth / 2;
+  if (STACK_Q.matches) reelSpan = 0;
+  story.style.height = reelSpan ? (innerHeight + reelSpan * 1.0) + 'px' : '';  // the reel moves 1:1 with the scroll
+  // Desktop: the heading is centred on the first card. Measured, because the card's position and stagger change with the window.
+  const intro = story.querySelector('.reel-intro');
+  if (SWIPE_Q.matches) { if (intro.parentElement === reel) reel.parentElement.before(intro); }
+  else if (intro.parentElement !== reel) reel.prepend(intro);
+  intro.style.marginTop = '';
+  if (!STACK_Q.matches) {
+    const h2 = intro.querySelector('h2'), em = h2.querySelector('em');
+    const base1 = baselineAt(m => em.before(m)), base2 = baselineAt(m => em.appendChild(m));
+    const cs = getComputedStyle(h2), fs = parseFloat(cs.fontSize);
+    capCtx.font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+    const inkMid = (base1 - capCtx.measureText('E').actualBoundingBoxAscent + base2) / 2;
+    const card = frames[0].querySelector('.shot').getBoundingClientRect();
+    const room = story.querySelector('.story-head').getBoundingClientRect().bottom + 12 - h2.getBoundingClientRect().top;
+    intro.style.marginTop = Math.max(room, (card.top + card.bottom) / 2 - inkMid) + 'px';
+  }
+  const heroSpan = document.querySelector('.stage').offsetHeight - innerHeight;
+  // Pull the story up over the hero's tail: its headline enters the bottom of the screen part way through the burn.
+  const pin = story.querySelector('.story-pin');
+  const headTop = story.querySelector('.reel-intro h2').getBoundingClientRect().top - pin.getBoundingClientRect().top;
+  const enter = BEAT[2] + (BEAT[3] - BEAT[2]) * STORY_IN;
+  story.style.marginTop = -(heroSpan * (1 - enter) + headTop) + 'px';
+}
+function storyScroll() {
+  const r = story.getBoundingClientRect();
+  const span = story.offsetHeight - innerHeight;
+  const p = span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 0;
+  const swipe = SWIPE_Q.matches, vertical = STACK_Q.matches && !swipe;
+  reel.style.transform = vertical || swipe ? '' : 'translate3d(' + (-p * reelSpan) + 'px,0,0)';
+  const wrap = reel.parentElement, room = wrap.scrollWidth - wrap.clientWidth;
+  // Desktop: the card in colour is the one nearest a point that starts on the first card and moves to the screen's centre by the end.
+  const mid = vertical ? innerHeight / 2 : swipe ? wrap.getBoundingClientRect().left + (parseFloat(getComputedStyle(wrap).scrollPaddingLeft) || 0) : storyRef + (innerWidth / 2 - storyRef) * p;
+  const cs = frames.map(f => { const b = f.getBoundingClientRect(); return vertical ? b.top + b.height / 2 : swipe ? b.left : b.left + b.width / 2; });
+  let pos = 0;
+  if (mid >= cs[cs.length - 1]) pos = cs.length - 1;
+  else for (let k = 0; k < cs.length - 1; k++) if (mid >= cs[k] && mid < cs[k + 1]) { pos = k + (mid - cs[k]) / (cs[k + 1] - cs[k]); break; }
+  if (swipe && room > 0 && wrap.scrollLeft >= room - 1) pos = cs.length - 1;
+  // Desktop: the next card takes the colour 30% of the way across, while it's still coming in.
+  const best = swipe || vertical ? Math.round(pos) : Math.min(frames.length - 1, Math.floor(pos + 0.7));
+  clips.forEach((el, k) => { el.classList.toggle('on', k === best); el.classList.toggle('done', k < best); });
+  frames.forEach((f, k) => f.classList.toggle('on', k === best));
+  railFill.style.width = swipe ? (room > 0 ? wrap.scrollLeft / room * 100 : 0) + '%' : (pos / CHAPTERS.length * 100) + '%';
+  // Depth: each picture drifts a little inside its card as the reel slides (desktop), within the card's 8px side margin.
+  frames.forEach(f => {
+    const m = f.querySelector('.media');
+    if (vertical || swipe || reduce) { m.style.transform = ''; return; }
+    const b = f.getBoundingClientRect();
+    const d = Math.max(-5, Math.min(5, -(b.left + b.width / 2 - innerWidth / 2) * 0.01));
+    m.style.transform = 'translate3d(' + d.toFixed(1) + 'px,0,0)';
+  });
+  document.getElementById('chapter-count').textContent = CHAPTERS[best].year;
+  // Year behind the reel: full while a card is centred; between two cards with different years the changed digit rebuilds.
+  const lo = Math.floor(pos), hi = Math.min(CHAPTERS.length - 1, lo + 1);
+  const vis = Math.max(0, Math.min(1, 1 - r.top / (innerHeight * 0.5))) * Math.max(0, Math.min(1, (r.bottom - innerHeight * 0.3) / (innerHeight * 0.7)));
+  yearState.a = lo; yearState.b = hi;
+  yearState.mix = Math.max(0, Math.min(1, (pos - lo - 0.15) / 0.7));
+  yearState.clear = innerWidth <= 760 ? 0 : vis;
+}
+sizeStory();
+addEventListener('resize', () => { sizeStory(); storyScroll(); });
+document.fonts && document.fonts.ready.then(() => { sizeStory(); storyScroll(); });
+
+/* ---------- Hero: 3D portrait, fluid machine reveal ---------- */
+// The cursor stirs a small screen-space fluid sim. Its ink is the reveal mask, cut hard so the edge reads as liquid.
+// Ink drains when the cursor rests, so nothing shows at rest. Every so often, while idle, a scan sweeps the head.
+const gl = document.getElementById('gl'), hud = document.getElementById('hud');
+const hctx = hud.getContext('2d');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stage = document.querySelector('.stage');
+const heroEl = document.querySelector('.hero'), workEl = document.getElementById('work'), wordmarkEl = document.getElementById('wordmark');
+// The name decodes from 0s and 1s, one letter at a time, each time the page opens (not when it opens on a #section).
+const nameSpans = [...wordmarkEl.querySelectorAll('span')], nameWords = nameSpans.map(n => n.textContent);
+const nameTotal = nameWords.join('').length, decodeOn = !reduce && !location.hash;
+const showName = p => { let i = 0; nameSpans.forEach((n, w) => { n.textContent = [...nameWords[w]].map(ch => (++i) / nameTotal <= p ? ch : (Math.random() < 0.5 ? '0' : '1')).join(''); }); };
+if (decodeOn) showName(0);
+const nameFallback = decodeOn ? setTimeout(() => showName(1), 5000) : 0;
+function decodeName() {
+  if (!decodeOn) return;
+  clearTimeout(nameFallback);
+  const t0 = performance.now(), HOLD = 350, DUR = 1100;
+  let last = 0;
+  const tick = now => {
+    const p = Math.max(0, Math.min(1, (now - t0 - HOLD) / DUR));
+    if (now - last > 55 || p >= 1) { last = now; showName(p); }
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+let W, H, Hv, dpr, renderer, scene, camera, mesh, uniforms, depthData, imgW, imgH, progress = 0, prog = 0, fluid, cellScene, cellRT;
+const svhProbe = document.createElement('div');
+svhProbe.style.cssText = 'position:fixed;left:0;top:0;width:0;height:100svh;visibility:hidden;pointer-events:none';
+document.body.appendChild(svhProbe);
+const camBase = new THREE.Vector3();
+const PLANE_H = 2, STRENGTH = 0.22;
+let PLANE_W;
+const ptr = { x: -1, y: -1, px: -1, py: -1, inside: false, lastMove: -1e9, speed: 0 };
+const rot = { x: 0, y: 0, tx: 0, ty: 0 };
+const steer = { on: false, until: 0 }, TOUCH = matchMedia('(hover: none)').matches;
+let tapAge = 1e9;
+const wipe = { v: 0, start: -1, next: 2 };
+
+// Shared by the portrait and the backdrop so every mask lines up across both.
+const LENS_GLSL = `
+  uniform vec2 uLens, uRes; uniform float uTime, uDpr, uLight, uTextAmt, uTextR, uHeadSeam, uShirtY; uniform vec3 uBg, uShirt;
+  uniform sampler2D uText, uDye, uGlyph, uYear, uCells; uniform float uSplit, uSeamX, uLineBoost, uYearMix, uYearClear, uCodeAmt; uniform vec2 uLightBand, uCellRes;
+  float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  float vnoise(vec2 p) {
+    vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);
+  }
+  float fbm(vec2 p) { float v = 0.0, a = 0.5; for (int i = 0; i < 4; i++) { v += a * vnoise(p); p = p * 2.03 + 11.7; a *= 0.5; } return v; }
+  float gSplitM = 0.0;
+  float revealMask() {
+    vec2 s = gl_FragCoord.xy / uRes;
+    float ink = texture2D(uDye, s).r;
+    float grain = vnoise(gl_FragCoord.xy / uDpr / 38.0 + uTime * 0.4) - 0.5;
+    float fluidM = smoothstep(0.16, 0.19, ink + grain * 0.05);
+    float wob = (vnoise(vec2(s.y * 5.0, uTime * 0.5)) - 0.5) * 22.0 * uDpr + sin(s.y * 13.0 + uTime * 1.2) * 4.0 * uDpr;
+    float side = smoothstep(-1.5 * uDpr, 1.5 * uDpr, gl_FragCoord.x - (uSeamX + wob));
+    float surf = uSplit * 1.3 - 0.04 - s.y + (vnoise(vec2(s.x * 7.0, uTime * 0.7)) - 0.5) * 0.05;
+    float rise = smoothstep(-0.003, 0.003, surf);
+    float bw = (vnoise(vec2(s.x * 4.0, uTime * 0.4)) - 0.5) * 30.0 * uDpr + sin(s.x * 9.0 + uTime) * 5.0 * uDpr;
+    float lightB = smoothstep(-1.5 * uDpr, 1.5 * uDpr, uLightBand.y + bw - gl_FragCoord.y) * smoothstep(-1.5 * uDpr, 1.5 * uDpr, gl_FragCoord.y - (uLightBand.x - bw));
+    gSplitM = side * rise * (1.0 - lightB);
+    return max(fluidM, side * rise) * (1.0 - lightB);
+  }
+  float inkCode() {
+    float ink = texture2D(uDye, gl_FragCoord.xy / uRes).r;
+    float rim = smoothstep(0.08, 0.12, ink) * (1.0 - smoothstep(0.15, 0.18, ink));
+    if (rim < 0.01 || uCodeAmt < 0.01) return 0.0;
+    vec2 cell = vec2(7.0, 14.0) * uDpr, ci = floor(gl_FragCoord.xy / cell), g = fract(gl_FragCoord.xy / cell);
+    float bit = step(0.5, hash(ci + floor(uTime * 9.0 + hash(ci + 3.0) * 5.0)));
+    return texture2D(uGlyph, vec2((bit + g.x) * 0.5, g.y)).a * rim * 0.9 * uCodeAmt;
+  }
+  vec3 lineHue(float n, vec2 cc) { return 0.5 + 0.5 * cos(6.2831 * (vec3(0.0, 0.33, 0.67) + n * 1.6 + uTime * 0.025 + cc.x / uDpr / 2400.0)); }
+  vec3 codeInk() {
+    vec2 cell = vec2(7.0, 14.0) * uDpr, ci = floor(gl_FragCoord.xy / cell);
+    return lineHue(texture2D(uCells, (ci + 0.5) / uCellRes).r, (ci + 0.5) * cell);
+  }
+  float field(vec2 fc, out float sw) {
+    vec2 toL = (fc - uLens) / uDpr; float dl = length(toL);
+    sw = exp(-dl * dl / 40000.0);
+    vec2 uv = fc / uDpr / 560.0 + vec2(-toL.y, toL.x) / max(dl, 1.0) * sw * 0.15;
+    return fbm(uv + vec2(uTime * 0.018, -uTime * 0.012)) + 0.45 * fbm(uv * 1.8 - vec2(uTime * 0.01));
+  }
+  vec4 cellLines(vec2 ci, vec2 cell) {
+    vec2 cc = (ci + 0.5) * cell;
+    float sw, swx, swy;
+    float n = field(cc, sw);
+    float k = n * 13.0, kx = field(cc + vec2(cell.x, 0.0), swx) * 13.0, ky = field(cc + vec2(0.0, cell.y), swy) * 13.0;
+    float d = abs(fract(k) - 0.5) / max(length(vec2(kx - k, ky - k)), 1e-4);
+    return vec4(n, 1.0 - smoothstep(0.3, 0.6, d), sw, 1.0);
+  }
+  float contour(out vec3 hue, out float sw, out float yr) {
+    vec2 cell = vec2(7.0, 14.0) * uDpr;
+    vec2 ci = floor(gl_FragCoord.xy / cell), cc = (ci + 0.5) * cell;
+    vec4 cl = texture2D(uCells, (ci + 0.5) / uCellRes);
+    float n = cl.r, on = cl.g; sw = cl.b;
+    vec4 ym = texture2D(uYear, cc / uRes);
+    float inA = step(0.5, ym.r), inB = step(0.5, ym.g);
+    float sw8 = 0.78 * hash(ci * 1.37 + 5.1) + 0.22 * (1.0 - cc.y / uRes.y);
+    float yearCell = mix(inA, inB, step(sw8, uYearMix));
+    float cleared = step(sw8, uYearClear);
+    on *= 1.0 - 0.45 * cleared;
+    float rebuilding = abs(inA - inB) * step(0.001, uYearMix) * step(uYearMix, 0.999);
+    float bit = step(0.5, hash(ci + floor(uTime * mix(1.2, 14.0, rebuilding) + hash(ci + 7.0) * 8.0)));
+    vec2 g = fract(gl_FragCoord.xy / cell);
+    float glyph = texture2D(uGlyph, vec2((bit + g.x) * 0.5, g.y)).a;
+    hue = lineHue(n, cc);
+    yr = yearCell * cleared * glyph;
+    return on * glyph;
+  }
+  vec3 backdrop(float m) {
+    vec3 hue; float sw, yr; float line = contour(hue, sw, yr);
+    vec3 light = mix(uBg, hue, line * (0.34 + 0.24 * sw) * uLight);
+    vec2 g = mod(gl_FragCoord.xy, 28.0 * uDpr);
+    float grid = (step(g.x, uDpr) + step(g.y, uDpr)) * 0.05;
+    vec3 inkLine = mix(hue, vec3(1.0), 0.12);
+    vec3 dark = vec3(0.043) + grid + max(line * inkLine * (0.36 + uLineBoost * 0.3), yr * mix(hue, vec3(1.0), 0.35) * 0.78);
+    vec3 col = mix(light, dark, m);
+    col = mix(col, uShirt, (1.0 - smoothstep(uShirtY - 1.0, uShirtY + 1.0, gl_FragCoord.y)) * (1.0 - m));
+    float tm = texture2D(uText, gl_FragCoord.xy / uRes).a;
+    float amt = mix(uTextAmt, uTextR * gSplitM, step(uHeadSeam, gl_FragCoord.x));
+    return mix(col, mix(vec3(0.07), vec3(0.95), m), tm * amt);
+  }`;
+
+/* Fluid sim: stable-fluids style (advect, curl, vorticity, divergence, pressure, project). */
+const FLUID_VS = `varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`;
+const FS = {
+  blur: `varying vec2 vUv; uniform sampler2D uSource; uniform vec2 uTexel; uniform float uValue;
+    void main() { vec4 c = texture2D(uSource, vUv);
+      vec4 n = texture2D(uSource, vUv + vec2(0.0, uTexel.y)) + texture2D(uSource, vUv - vec2(0.0, uTexel.y)) + texture2D(uSource, vUv + vec2(uTexel.x, 0.0)) + texture2D(uSource, vUv - vec2(uTexel.x, 0.0));
+      gl_FragColor = mix(c, n * 0.25, uValue); }`,
+  splat: `varying vec2 vUv; uniform sampler2D uTarget; uniform float uAspect, uRadius, uSquash, uMaxBlend; uniform vec2 uPoint, uDir; uniform vec3 uColor;
+    void main() { vec2 p = vUv - uPoint; p.x *= uAspect;
+      float along = dot(p, uDir), across = dot(p, vec2(-uDir.y, uDir.x));
+      vec3 s = exp(-(along * along / uSquash + across * across * uSquash) / uRadius) * uColor;
+      vec3 base = texture2D(uTarget, vUv).xyz;
+      gl_FragColor = vec4(mix(base + s, max(base, s), uMaxBlend), 1.0); }`,
+  advect: `varying vec2 vUv; uniform sampler2D uVelocity, uSource; uniform vec2 uTexel; uniform float uDt, uDissipation;
+    void main() { vec2 c = vUv - uDt * texture2D(uVelocity, vUv).xy * uTexel; gl_FragColor = uDissipation * texture2D(uSource, c); }`,
+  curl: `varying vec2 vUv; uniform sampler2D uVelocity; uniform vec2 uTexel;
+    void main() { float L = texture2D(uVelocity, vUv - vec2(uTexel.x, 0.0)).y, R = texture2D(uVelocity, vUv + vec2(uTexel.x, 0.0)).y;
+      float T = texture2D(uVelocity, vUv + vec2(0.0, uTexel.y)).x, B = texture2D(uVelocity, vUv - vec2(0.0, uTexel.y)).x;
+      gl_FragColor = vec4(0.5 * (R - L - T + B), 0.0, 0.0, 1.0); }`,
+  vorticity: `varying vec2 vUv; uniform sampler2D uVelocity, uCurl; uniform vec2 uTexel; uniform float uCurlAmt, uDt;
+    void main() { float L = texture2D(uCurl, vUv - vec2(uTexel.x, 0.0)).x, R = texture2D(uCurl, vUv + vec2(uTexel.x, 0.0)).x;
+      float T = texture2D(uCurl, vUv + vec2(0.0, uTexel.y)).x, B = texture2D(uCurl, vUv - vec2(0.0, uTexel.y)).x, C = texture2D(uCurl, vUv).x;
+      vec2 f = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L)); f /= length(f) + 0.0001; f *= uCurlAmt * C; f.y *= -1.0;
+      vec2 v = texture2D(uVelocity, vUv).xy + f * uDt; gl_FragColor = vec4(clamp(v, -1000.0, 1000.0), 0.0, 1.0); }`,
+  divergence: `varying vec2 vUv; uniform sampler2D uVelocity; uniform vec2 uTexel;
+    void main() { float L = texture2D(uVelocity, vUv - vec2(uTexel.x, 0.0)).x, R = texture2D(uVelocity, vUv + vec2(uTexel.x, 0.0)).x;
+      float T = texture2D(uVelocity, vUv + vec2(0.0, uTexel.y)).y, B = texture2D(uVelocity, vUv - vec2(0.0, uTexel.y)).y;
+      gl_FragColor = vec4(0.5 * (R - L + T - B), 0.0, 0.0, 1.0); }`,
+  scale: `varying vec2 vUv; uniform sampler2D uSource; uniform float uValue; void main() { gl_FragColor = uValue * texture2D(uSource, vUv); }`,
+  pressure: `varying vec2 vUv; uniform sampler2D uPressure, uDivergence; uniform vec2 uTexel;
+    void main() { float L = texture2D(uPressure, vUv - vec2(uTexel.x, 0.0)).x, R = texture2D(uPressure, vUv + vec2(uTexel.x, 0.0)).x;
+      float T = texture2D(uPressure, vUv + vec2(0.0, uTexel.y)).x, B = texture2D(uPressure, vUv - vec2(0.0, uTexel.y)).x;
+      gl_FragColor = vec4((L + R + B + T - texture2D(uDivergence, vUv).x) * 0.25, 0.0, 0.0, 1.0); }`,
+  gradient: `varying vec2 vUv; uniform sampler2D uPressure, uVelocity; uniform vec2 uTexel;
+    void main() { float L = texture2D(uPressure, vUv - vec2(uTexel.x, 0.0)).x, R = texture2D(uPressure, vUv + vec2(uTexel.x, 0.0)).x;
+      float T = texture2D(uPressure, vUv + vec2(0.0, uTexel.y)).x, B = texture2D(uPressure, vUv - vec2(0.0, uTexel.y)).x;
+      vec2 v = texture2D(uVelocity, vUv).xy - vec2(R - L, T - B); gl_FragColor = vec4(v, 0.0, 1.0); }`
+};
+class Fluid {
+  constructor(r) {
+    this.r = r;
+    this.scene = new THREE.Scene(); this.cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2)); this.quad.frustumCulled = false; this.scene.add(this.quad);
+    this.mat = {};
+    for (const k in FS) this.mat[k] = new THREE.ShaderMaterial({ vertexShader: FLUID_VS, fragmentShader: FS[k], depthTest: false, depthWrite: false, uniforms: {
+      uTarget: { value: null }, uAspect: { value: 1 }, uRadius: { value: 0.002 }, uSquash: { value: 1 }, uDir: { value: new THREE.Vector2(1, 0) }, uPoint: { value: new THREE.Vector2() }, uColor: { value: new THREE.Vector3() },
+      uVelocity: { value: null }, uSource: { value: null }, uTexel: { value: new THREE.Vector2() }, uDt: { value: 0.016 }, uDissipation: { value: 1 },
+      uCurl: { value: null }, uCurlAmt: { value: 5 }, uPressure: { value: null }, uDivergence: { value: null }, uValue: { value: 0.8 }, uMaxBlend: { value: 0 } } });
+    this.splats = [];
+    this.fade = 0.985;
+    this.idle = 0;
+    this.perFrame = false;
+  }
+  rt(w, h) {
+    return new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, format: THREE.RGBAFormat, minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter, depthBuffer: false, stencilBuffer: false });
+  }
+  pair(w, h) { return { read: this.rt(w, h), write: this.rt(w, h), swap() { const t = this.read; this.read = this.write; this.write = t; } }; }
+  resize(w, h) {
+    const sim = 128, dye = 512, a = w / h;
+    const sw = a > 1 ? Math.round(sim * a) : sim, sh = a > 1 ? sim : Math.round(sim / a);
+    const dw = a > 1 ? Math.round(dye * a) : dye, dh = a > 1 ? dye : Math.round(dye / a);
+    if (this.vel) [this.vel, this.dye, this.prs].forEach(p => { p.read.dispose(); p.write.dispose(); });
+    if (this.div) [this.div, this.crl].forEach(t => t.dispose());
+    this.vel = this.pair(sw, sh); this.dye = this.pair(dw, dh); this.prs = this.pair(sw, sh);
+    this.div = this.rt(sw, sh); this.crl = this.rt(sw, sh);
+    this.simTexel = new THREE.Vector2(1 / sw, 1 / sh); this.dyeTexel = new THREE.Vector2(1 / dw, 1 / dh);
+    this.aspect = a;
+    [this.vel, this.dye, this.prs].forEach(p => { this.clearTarget(p.read); this.clearTarget(p.write); });
+  }
+  clearTarget(t) { this.r.setRenderTarget(t); this.r.setClearColor(0x000000, 0); this.r.clear(); }
+  pass(name, target, set) {
+    const m = this.mat[name]; set(m.uniforms); this.quad.material = m;
+    this.r.setRenderTarget(target); this.r.render(this.scene, this.cam);
+  }
+  splat(x, y, dx, dy, ink, size = 1) { this.splats.push([x, y, dx, dy, ink, size]); }
+  step(dt) {
+    const f = this.perFrame ? 1 : Math.min(2, dt * 60);
+    if (this.splats.length) { this.idle = 0; this.cleared = false; }
+    else if ((this.idle += f) > 260) {
+      if (!this.cleared) { [this.vel, this.dye, this.prs].forEach(p => { this.clearTarget(p.read); this.clearTarget(p.write); }); this.r.setRenderTarget(null); this.cleared = true; }
+      return;
+    }
+    const T = this.simTexel;
+    for (const [x, y, dx, dy, ink, size] of this.splats) {
+      const asp = this.aspect > 1 ? this.aspect : 1, rad = 0.00026 * asp * size, push = 0.00038 * asp * size;
+      const len = Math.hypot(dx * this.aspect, dy), moving = len > 1e-6;
+      const dir = moving ? [dx * this.aspect / len, dy / len] : [1, 0], squash = moving ? 2.6 : 1;
+      this.pass('splat', this.vel.write, u => { u.uTarget.value = this.vel.read.texture; u.uAspect.value = this.aspect; u.uPoint.value.set(x, y); u.uColor.value.set(dx, dy, 0); u.uRadius.value = push; u.uSquash.value = 1; u.uDir.value.set(1, 0); u.uMaxBlend.value = 0; }); this.vel.swap();
+      this.pass('splat', this.dye.write, u => { u.uTarget.value = this.dye.read.texture; u.uAspect.value = this.aspect; u.uPoint.value.set(x, y); u.uColor.value.set(ink, ink, ink); u.uRadius.value = rad; u.uSquash.value = squash; u.uDir.value.set(dir[0], dir[1]); u.uMaxBlend.value = 1; }); this.dye.swap();
+    }
+    this.splats.length = 0;
+    this.pass('curl', this.crl, u => { u.uVelocity.value = this.vel.read.texture; u.uTexel.value.copy(T); });
+    this.pass('vorticity', this.vel.write, u => { u.uVelocity.value = this.vel.read.texture; u.uCurl.value = this.crl.texture; u.uTexel.value.copy(T); u.uDt.value = dt; }); this.vel.swap();
+    this.pass('divergence', this.div, u => { u.uVelocity.value = this.vel.read.texture; u.uTexel.value.copy(T); });
+    this.pass('scale', this.prs.write, u => { u.uSource.value = this.prs.read.texture; u.uValue.value = 0.8; }); this.prs.swap();
+    for (let i = 0; i < 18; i++) { this.pass('pressure', this.prs.write, u => { u.uPressure.value = this.prs.read.texture; u.uDivergence.value = this.div.texture; u.uTexel.value.copy(T); }); this.prs.swap(); }
+    this.pass('gradient', this.vel.write, u => { u.uPressure.value = this.prs.read.texture; u.uVelocity.value = this.vel.read.texture; u.uTexel.value.copy(T); }); this.vel.swap();
+    this.pass('advect', this.vel.write, u => { u.uVelocity.value = this.vel.read.texture; u.uSource.value = this.vel.read.texture; u.uTexel.value.copy(T); u.uDt.value = dt; u.uDissipation.value = Math.pow(0.985, f); }); this.vel.swap();
+    this.pass('advect', this.dye.write, u => { u.uVelocity.value = this.vel.read.texture; u.uSource.value = this.dye.read.texture; u.uTexel.value.copy(T); u.uDt.value = dt; u.uDissipation.value = Math.pow(this.fade, f); }); this.dye.swap();
+    for (let i = 0; i < 3; i++) { this.pass('blur', this.dye.write, u => { u.uSource.value = this.dye.read.texture; u.uTexel.value.copy(this.dyeTexel); u.uValue.value = Math.min(1, f); }); this.dye.swap(); }
+    this.r.setRenderTarget(null);
+  }
+  get texture() { return this.dye.read.texture; }
+}
+
+const yearCanvas = document.createElement('canvas');
+let yearTex = null, yearDrawn = '';
+function drawYear(a, b) {
+  const c = yearCanvas; c.width = Math.max(1, Math.round(W * dpr)); c.height = Math.max(1, Math.round(H * dpr));
+  const x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, W, H);
+  const face = s => '850 extra-condensed ' + s + 'px Archivo, "Arial Narrow", sans-serif';
+  let size = H * 0.86; x.font = face(size);
+  const slot = Math.max(...'0123456789'.split('').map(ch => x.measureText(ch).width));
+  const widthOf = t => /^\d{4}$/.test(t) ? slot * 4 : x.measureText(t).width;
+  const widest = Math.max(widthOf(a), widthOf(b));
+  if (widest > W * 0.92) size *= W * 0.92 / widest;
+  x.font = face(size); x.lineWidth = 18; x.lineJoin = 'round'; x.textBaseline = 'middle'; x.globalCompositeOperation = 'lighter';
+  const put = (t, colour) => {
+    x.strokeStyle = colour;
+    if (/^\d{4}$/.test(t)) {
+      const s4 = Math.max(...'0123456789'.split('').map(ch => x.measureText(ch).width)), left = W / 2 - s4 * 2;
+      x.textAlign = 'center';
+      for (let i = 0; i < 4; i++) x.strokeText(t[i], left + s4 * (i + 0.5), H * 0.47);
+    } else { x.textAlign = 'center'; x.strokeText(t, W / 2, H * 0.47); }
+  };
+  put(a, 'rgb(255,0,0)'); put(b, 'rgb(0,255,0)');
+  x.globalCompositeOperation = 'source-over';
+  yearDrawn = a + '|' + b + W + 'x' + H;
+  if (yearTex) yearTex.needsUpdate = true;
+}
+const headlineCanvas = document.createElement('canvas');
+let headSeam = 0;
+let headlineTex = null;
+let glyphTex;
+function makeGlyphs() {
+  const c = document.createElement('canvas'); c.width = 128; c.height = 128;
+  const draw = () => {
+    const x = c.getContext('2d'); x.clearRect(0, 0, 128, 128);
+    x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.font = '500 100px "Geist Mono", ui-monospace, Menlo, monospace';
+    x.fillText('0', 32, 66); x.fillText('1', 96, 66);
+  };
+  draw();
+  const tex = new THREE.CanvasTexture(c);
+  document.fonts && document.fonts.ready.then(() => { draw(); tex.needsUpdate = true; });
+  return tex;
+}
+function drawHeadline() {
+  const c = headlineCanvas; c.width = Math.max(1, Math.round(W * dpr)); c.height = Math.max(1, Math.round(H * dpr));
+  const x = c.getContext('2d'); x.clearRect(0, 0, c.width, c.height);
+  if (!mesh) return;
+  mesh.rotation.set(0, 0, 0); mesh.updateMatrixWorld(); camera.updateMatrixWorld();
+  const l = project(234), r = project(454), e1 = project(468), e2 = project(473);
+  const seam = (e1[0] + e2[0]) / 2, half = (r[0] - l[0]) / 2 + Math.max(28, W * 0.035);
+  headSeam = seam;
+  const avail = Math.max(60, Math.min(seam - half, W - seam - half) - Math.max(20, W * 0.03));
+  x.fillStyle = '#fff'; x.textBaseline = 'alphabetic';
+  if (W <= 760) {
+    if ('fontStretch' in x) x.fontStretch = 'normal';
+    const brow = project(10)[1], chin = project(152)[1], hairTop = brow - (chin - brow) * 0.36;
+    const gap = 10, band = Math.max(40, hairTop - 64);
+    let s = 100 * dpr; x.font = '850 ' + s + 'px Archivo, "Arial Narrow", sans-serif';
+    const w = Math.max(x.measureText(HEAD_L2).width, x.measureText(HEAD_R2).width);
+    s = Math.min(s * ((seam - gap - 16) * dpr) / w, (band / 1.85) * dpr, 44 * dpr);
+    x.font = '850 ' + s + 'px Archivo, "Arial Narrow", sans-serif';
+    const base = hairTop * dpr - s * 0.15;
+    x.textAlign = 'right'; x.fillText(HEAD_L, (seam - gap) * dpr, base - s * 0.9); x.fillText(HEAD_L2, (seam - gap) * dpr, base);
+    x.textAlign = 'left'; x.fillText(HEAD_R, (seam + gap) * dpr, base - s * 0.9); x.fillText(HEAD_R2, (seam + gap) * dpr, base);
+    if (headlineTex) headlineTex.needsUpdate = true;
+    return;
+  }
+  if ('fontStretch' in x) x.fontStretch = 'expanded';
+  let size = H * 0.16 * dpr;
+  x.font = '850 ' + size + 'px Archivo, "Arial Narrow", sans-serif';
+  const widest = Math.max(x.measureText(HEAD_L2).width, x.measureText(HEAD_R2).width);
+  size *= Math.min(1, (avail * dpr) / widest);
+  x.font = '850 ' + size + 'px Archivo, "Arial Narrow", sans-serif';
+  const top = ((e1[1] + e2[1]) / 2) * dpr - size * 0.35;
+  x.textAlign = 'right';
+  x.fillText(HEAD_L, (seam - half) * dpr, top); x.fillText(HEAD_L2, (seam - half) * dpr, top + size * 0.9);
+  x.textAlign = 'left';
+  x.fillText(HEAD_R, (seam + half) * dpr, top); x.fillText(HEAD_R2, (seam + half) * dpr, top + size * 0.9);
+  if (headlineTex) headlineTex.needsUpdate = true;
+}
+
+function loadImg(src) { return new Promise(res => { const i = new Image(); i.onload = () => res(i); i.src = src; }); }
+function depthAt(u, v) {
+  const x = Math.min(imgW - 1, Math.max(0, Math.round(u * (imgW - 1))));
+  const y = Math.min(imgH - 1, Math.max(0, Math.round(v * (imgH - 1))));
+  return depthData[(y * imgW + x) * 4] / 255;
+}
+
+async function initHero() {
+  const [photo, depth, machineImg] = await Promise.all([loadImg(IMG_SRC), loadImg(DEPTH_SRC), loadImg(MACHINE_SRC)]);
+  try { await document.fonts.load('850 100px Archivo'); } catch (e) {}
+  glyphTex = makeGlyphs();
+  headlineTex = new THREE.CanvasTexture(headlineCanvas); headlineTex.minFilter = THREE.LinearFilter;
+  yearTex = new THREE.CanvasTexture(yearCanvas); yearTex.minFilter = THREE.LinearFilter;
+  imgW = photo.width; imgH = photo.height; PLANE_W = PLANE_H * imgW / imgH;
+  const dc = document.createElement('canvas'); dc.width = imgW; dc.height = imgH;
+  const dcx = dc.getContext('2d'); dcx.drawImage(depth, 0, 0, imgW, imgH); depthData = dcx.getImageData(0, 0, imgW, imgH).data;
+
+  renderer = new THREE.WebGLRenderer({ canvas: gl, antialias: false });
+  document.documentElement.classList.add('gl');
+  renderer.autoClear = true;
+  scene = new THREE.Scene(); cellScene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(28, 1, 0.002, 100);
+  fluid = new Fluid(renderer);
+  if (TOUCH) { fluid.fade = 0.9785; fluid.perFrame = true; }
+  const tex = t => { const x = new THREE.Texture(t); x.needsUpdate = true; x.minFilter = THREE.LinearFilter; return x; };
+  const neckV = 1 - Math.min(0.98, MESH.pts[152][1] - 0.012);   // at the chin line, in texture v
+  uniforms = {
+    uPhoto: { value: tex(photo) }, uMachine: { value: tex(machineImg) }, uDepth: { value: tex(depth) },
+    uStrength: { value: STRENGTH }, uLens: { value: new THREE.Vector2() }, uTime: { value: 0 },
+    uDpr: { value: 1 }, uLight: { value: 1 }, uBg: { value: new THREE.Color('#F8F8F6') },
+    uText: { value: headlineTex }, uGlyph: { value: glyphTex }, uRes: { value: new THREE.Vector2(1, 1) }, uTextAmt: { value: 0 }, uTextR: { value: 0 }, uCodeAmt: { value: 1 }, uHeadSeam: { value: 0 }, uShirtY: { value: -1 }, uShirt: { value: new THREE.Vector3(0.062, 0.062, 0.062) },
+    uDye: { value: null }, uSplit: { value: 0 }, uSeamX: { value: 0 }, uDissolve: { value: 0 }, uLineBoost: { value: 0 }, uLightBand: { value: new THREE.Vector2(-1, -1) }, uWipe: { value: 0 }, uNeckV: { value: neckV }, uGhost: { value: 0.0 }, uMFade: { value: 0.14 }, uYear: { value: yearTex }, uYearMix: { value: 0 }, uYearClear: { value: 0 },
+    uEye1: { value: new THREE.Vector2(MESH.pts[468][0], 1 - MESH.pts[468][1]) }, uEye2: { value: new THREE.Vector2(MESH.pts[473][0], 1 - MESH.pts[473][1]) },
+    uLook: { value: new THREE.Vector2() }, uImgAsp: { value: photo.height / photo.width },
+    uMTexel: { value: new THREE.Vector2(1 / machineImg.width, 1 / machineImg.height) },
+    uCells: { value: null }, uCellRes: { value: new THREE.Vector2(1, 1) }
+  };
+  const mat = new THREE.ShaderMaterial({
+    uniforms, extensions: { derivatives: true },
+    vertexShader: `
+      uniform sampler2D uDepth; uniform float uStrength; varying vec2 vUv;
+      void main() { vUv = uv; vec3 p = position; p.z += texture2D(uDepth, uv).r * uStrength;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0); }`,
+    fragmentShader: LENS_GLSL + `
+      uniform sampler2D uPhoto, uMachine; uniform float uWipe, uNeckV, uGhost, uDissolve, uMFade, uImgAsp; uniform vec2 uMTexel, uEye1, uEye2, uLook; varying vec2 vUv;
+      const float EYE_R = 0.024;
+      float eyeDist(vec2 e) { return length((vUv - e) * vec2(1.0, uImgAsp)); }
+      float machineFade() { return smoothstep(0.104, uMFade, vUv.y); }
+      float machineLines() {
+        vec2 o = uMTexel * 2.2;
+        float l = dot(texture2D(uMachine, vUv - vec2(o.x, 0.0)).rgb, vec3(0.333)), r = dot(texture2D(uMachine, vUv + vec2(o.x, 0.0)).rgb, vec3(0.333));
+        float d = dot(texture2D(uMachine, vUv - vec2(0.0, o.y)).rgb, vec3(0.333)), u = dot(texture2D(uMachine, vUv + vec2(0.0, o.y)).rgb, vec3(0.333));
+        float g = length(vec2(r - l, u - d));
+        return smoothstep(0.04, 0.13, g) * texture2D(uMachine, vUv).a * machineFade();
+      }
+      void main() {
+        float d1 = eyeDist(uEye1), d2 = eyeDist(uEye2);
+        float turn = (1.0 - smoothstep(0.0, EYE_R, d1)) + (1.0 - smoothstep(0.0, EYE_R, d2));
+        vec4 ph = texture2D(uPhoto, vUv); vec4 mc = texture2D(uMachine, vUv - uLook * turn);
+        float eyeGlow = exp(-d1 * d1 / (EYE_R * EYE_R * 0.35)) + exp(-d2 * d2 / (EYE_R * EYE_R * 0.35));
+        float corners = mix(1.0, smoothstep(0.0, 0.06, vUv.x) * smoothstep(0.0, 0.06, 1.0 - vUv.x), 1.0 - smoothstep(0.0, 0.18, vUv.y));
+        float edgeP = ph.a * corners * smoothstep(0.0, 0.04, vUv.y);
+        float dn = fbm(vUv * 6.0 + 3.1) * 0.75 + vUv.y * 0.45;
+        float thr = uDissolve * 1.35 - 0.12;
+        float keep = smoothstep(thr, thr + 0.025, dn);
+        float burn = (smoothstep(thr - 0.03, thr, dn) - smoothstep(thr + 0.01, thr + 0.045, dn)) * step(0.001, uDissolve);
+        float m = revealMask();
+        vec2 s = gl_FragCoord.xy / uRes;
+        float yTop = 1.0 - s.y + sin(s.x * 3.14159) * 0.05;
+        float bd = yTop - mix(0.02, 1.08, uWipe);
+        float live = smoothstep(0.0, 0.05, uWipe) * (1.0 - smoothstep(0.95, 1.0, uWipe));
+        float band = exp(-bd * bd / 0.0045) * live;
+        float trail = (1.0 - smoothstep(0.0, 0.5, -bd)) * step(bd, 0.0) * live;
+        float k = m;
+        vec3 bg = backdrop(m);
+        vec3 photoLayer = mix(bg, ph.rgb, edgeP);
+        float scan = 0.6 + 0.4 * smoothstep(0.0, 0.08, 0.08 - abs(fract(-uTime * 0.07) - (1.0 - vUv.y)));
+        photoLayer = mix(photoLayer, mc.rgb, band * 0.06 * mc.a * edgeP);
+        float ghostL = machineLines() * (uGhost * scan + band * 0.32 + trail * 0.14) * edgeP * mix(0.45, 1.0, smoothstep(uNeckV - 0.04, uNeckV + 0.02, vUv.y));
+        photoLayer = 1.0 - (1.0 - photoLayer) * (1.0 - vec3(0.92, 0.98, 1.0) * min(ghostL, 1.0));
+        float shirt = edgeP * (1.0 - smoothstep(uNeckV - 0.03, uNeckV + 0.03, vUv.y));
+        float mA = mc.a * corners * machineFade();
+        vec3 machLayer = mix(mix(bg, ph.rgb * 0.22, shirt), mc.rgb, mA) + vec3(0.25, 0.9, 1.0) * eyeGlow * (0.55 + 0.15 * sin(uTime * 3.0)) * mA;
+        vec3 figure = mix(photoLayer, machLayer, k);
+        float hueT = fbm(vUv * 2.5 + uTime * 0.05) * 1.6 + uTime * 0.025 + vUv.x * 0.9;
+        vec3 inkCol = mix(0.5 + 0.5 * cos(6.2831 * (vec3(0.0, 0.33, 0.67) + hueT)), vec3(1.0), 0.1);
+        vec3 outCol = mix(bg, figure, keep) + inkCol * burn * max(edgeP, mc.a) * 1.2;
+        gl_FragColor = vec4(mix(outCol, codeInk(), inkCode()), 1.0);
+      }`
+  });
+  mesh = new THREE.Mesh(new THREE.PlaneGeometry(PLANE_W, PLANE_H, 200, 300), mat);
+  const back = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms, depthTest: false, depthWrite: false, extensions: { derivatives: true },
+    vertexShader: `void main() { gl_Position = vec4(position.xy, 0.999, 1.0); }`,
+    fragmentShader: LENS_GLSL + `void main() { gl_FragColor = vec4(mix(backdrop(revealMask()), codeInk(), inkCode()), 1.0); }`
+  }));
+  back.frustumCulled = false; back.renderOrder = -1;
+  scene.add(back); scene.add(mesh);
+  const cells = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms, depthTest: false, depthWrite: false,
+    vertexShader: `void main() { gl_Position = vec4(position.xy, 0.0, 1.0); }`,
+    fragmentShader: LENS_GLSL + `void main() { gl_FragColor = cellLines(floor(gl_FragCoord.xy), vec2(7.0, 14.0) * uDpr); }`
+  }));
+  cells.frustumCulled = false; cellScene.add(cells);
+  resize(); onScroll();
+  requestAnimationFrame(frame);
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(decodeName));
+}
+
+function resize() {
+  dpr = Math.min(devicePixelRatio || 1, innerWidth <= 760 ? 1.5 : 2);
+  W = heroEl.clientWidth; H = heroEl.clientHeight;
+  if (!W || !H) return;
+  renderer.setPixelRatio(dpr); renderer.setSize(W, H, false);
+  hud.width = Math.round(W * dpr); hud.height = Math.round(H * dpr);
+  camera.aspect = W / H;
+  // Framing: the screen shows the portrait from just above the hair (CROP_TOP) to just below the collar (CROP_BOTTOM).
+  let CROP_TOP = 0.07, CROP_BOTTOM = 0.86;
+  Hv = H;
+  if (W <= 760) {
+    Hv = Math.min(H, svhProbe.offsetHeight || innerHeight);
+    const perPx = 0.508 / W;
+    CROP_TOP = HAIR_TOP - Math.max(0.2 * Hv, 135) * perPx;
+    CROP_TOP = Math.min(CROP_TOP, 0.96 - Hv * perPx);
+    CROP_BOTTOM = CROP_TOP + H * perPx;
+  }
+  const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  const visibleH = PLANE_H * (CROP_BOTTOM - CROP_TOP);
+  const dist = visibleH / (2 * tanHalf);
+  camBase.set(0, (0.5 - (CROP_TOP + CROP_BOTTOM) / 2) * PLANE_H, dist);
+  camera.position.copy(camBase);
+  camera.updateProjectionMatrix();
+  uniforms.uDpr.value = dpr;
+  uniforms.uMFade.value = W <= 760 ? 0.25 : 0.14;
+  uniforms.uRes.value.set(W * dpr, H * dpr);
+  const cw = Math.ceil(W / 7) + 1, ch = Math.ceil(H / 14) + 1;
+  if (!cellRT || cellRT.width !== cw || cellRT.height !== ch) {
+    if (cellRT) cellRT.dispose();
+    cellRT = new THREE.WebGLRenderTarget(cw, ch, { type: THREE.HalfFloatType, format: THREE.RGBAFormat, minFilter: THREE.NearestFilter,
+      magFilter: THREE.NearestFilter, depthBuffer: false, stencilBuffer: false });
+    uniforms.uCells.value = cellRT.texture; uniforms.uCellRes.value.set(cw, ch);
+  }
+  fluid.resize(W, H);
+  drawHeadline();
+}
+// Top of the hair in the portrait, as a fraction of the image height (from hero-data.js, else a typical value).
+const HAIR_TOP = (typeof MESH !== 'undefined' && MESH.hairTop) || 0.185;
+
+const v3 = new THREE.Vector3();
+function project(i) {
+  const u = MESH.pts[i][0], v = MESH.pts[i][1];
+  v3.set((u - 0.5) * PLANE_W, (0.5 - v) * PLANE_H, depthAt(u, v) * STRENGTH);
+  v3.applyMatrix4(mesh.matrixWorld).project(camera);
+  return [(v3.x + 1) / 2 * W, (1 - v3.y) / 2 * H];
+}
+
+const TRACKED = [[468, 'R EYE'], [473, 'L EYE'], [1, 'NOSE'], [61, ''], [291, ''], [152, 'CHIN']];
+let lastT = 0, hudLive = true, readoutHTML = '';
+const BG = new THREE.Color('#F8F8F6'), HOVER = matchMedia('(hover: hover)');
+const readoutEl = document.getElementById('readout'), hintEl = document.getElementById('hint');
+function frame(now) {
+  requestAnimationFrame(frame);
+  const t = now / 1000, dt = Math.min(0.033, Math.max(0.001, t - (lastT || t))); lastT = t;
+  if (!W || !H || W !== heroEl.clientWidth || H !== heroEl.clientHeight) resize();
+  if (!W || !H) return;
+  if (!isFinite(rot.x) || !isFinite(rot.y)) { rot.x = rot.y = rot.tx = rot.ty = 0; }
+
+  onScroll(); prog = progress;
+  const P = prog, clamp01 = v => Math.max(0, Math.min(1, v)), sm = v => { v = clamp01(v); return v * v * (3 - 2 * v); };
+  const lin = (a, b) => clamp01((P - a) / (b - a)), easeIn = x => x < 0.4 ? x * x / 0.64 : (2 * x - 0.4) / 1.6;
+  const rise = easeIn(lin(BEAT[0], BEAT[1])), sweep = lin(BEAT[1], BEAT[2]), burn = 1 - easeIn(1 - lin(BEAT[2], BEAT[3]));
+  // Head turns toward the cursor (or a finger); drifts gently when it's away.
+  const idle = t - ptr.lastMove;
+  if (reduce) { rot.tx = rot.ty = 0; }
+  else if (steer.on || t < steer.until) { /* the finger's target holds */ }
+  else if (!ptr.inside || idle > 4) { rot.ty = Math.sin(t * 0.45) * (TOUCH ? 0.13 : 0.05); rot.tx = Math.sin(t * 0.31) * (TOUCH ? 0.05 : 0.02); }
+  if (P > BEAT[1]) { rot.ty = 0; rot.tx = 0; }
+  rot.x += (rot.tx - rot.x) * 0.05; rot.y += (rot.ty - rot.y) * 0.05;
+  mesh.rotation.set(rot.x, rot.y, 0); mesh.updateMatrixWorld();
+  camera.position.set(camBase.x, camBase.y, camBase.z * (1 + 0.06 * burn));
+  camera.updateMatrixWorld();
+  v3.set(0, (0.5 - 0.96) * PLANE_H, depthAt(0.5, 0.96) * STRENGTH).applyMatrix4(mesh.matrixWorld).project(camera);
+  uniforms.uShirtY.value = (v3.y + 1) / 2 * H * dpr;
+
+  // Pointer -> fluid splats, interpolated so fast moves leave a continuous trail.
+  if (ptr.moved && !reduce) {
+    const dx = ptr.x - ptr.px, dy = ptr.y - ptr.py, dist = Math.hypot(dx, dy);
+    const steps = Math.min(12, Math.max(1, Math.ceil(dist / 14)));
+    const width = 0.45 + 0.55 * clamp01(dist / Math.min(2, dt * 60) / 24);
+    for (let k = 1; k <= steps && dist >= 0.5; k++) {
+      const f = k / steps, x = ptr.px + dx * f, y = ptr.py + dy * f;
+      fluid.splat(x / W, 1 - y / H, (dx / W) * 4200 / steps, (-dy / H) * 4200 / steps, 1.8, width);
+    }
+    ptr.speed = Math.min(1, ptr.speed * 0.6 + dist / 60);
+    ptr.moved = false;
+  }
+  ptr.speed *= 0.92;
+  fluid.step(dt);
+  uniforms.uDye.value = fluid.texture;
+
+  // Idle wipe: every so often while still, a scan band sweeps the head top to bottom.
+  if (!reduce && P < BEAT[0]) {
+    if (wipe.start < 0 && t > wipe.next) wipe.start = t;
+    if (wipe.start >= 0) {
+      const p = t - wipe.start, SWEEP = 2.7;
+      wipe.v = p < SWEEP ? p / SWEEP : 0;
+      if (p >= SWEEP) { wipe.start = -1; wipe.v = 0; wipe.next = t + 1.0; }
+    }
+  } else { wipe.v = 0; }
+  uniforms.uWipe.value = wipe.v;
+  const eyes = [project(468), project(473)];
+  const cx = (eyes[0][0] + eyes[1][0]) / 2, cy = (eyes[0][1] + eyes[1][1]) / 2;
+  { const dx = ptr.inside ? ptr.x - cx : 0, dy = ptr.inside ? ptr.y - cy : 0, len = Math.hypot(dx, dy) || 1, mag = Math.min(1, len / 380) * 0.011;
+    const L = uniforms.uLook.value; L.x += (dx / len * mag - L.x) * 0.15; L.y += (-dy / len * mag / uniforms.uImgAsp.value - L.y) * 0.15; }
+  const split0 = 0.01 + (1 - Math.min(H, innerHeight) / H) / 1.3;
+  uniforms.uSplit.value = split0 + (0.82 - split0) * rise;
+  uniforms.uSeamX.value = (cx + (-18 - cx) * sweep) * dpr;
+  uniforms.uDissolve.value = burn > 0 ? 0.23 + 0.545 * burn : 0;
+  uniforms.uLineBoost.value = sm((P - BEAT[2]) / (BEAT[3] - BEAT[2])) * (1 - sm((P - 0.86) / 0.14));
+  const wr = workEl.getBoundingClientRect();
+  uniforms.uLightBand.value.set((H - wr.bottom) * dpr, (H - wr.top) * dpr);
+  mesh.visible = P < 0.995;
+  const cur = P < BEAT[1] && HOVER.matches ? 'none' : '';
+  if (heroEl.style.cursor !== cur) heroEl.style.cursor = cur;
+  document.documentElement.classList.toggle('past-hero', P > 0.97);
+  const lens = ptr.inside ? [ptr.x, ptr.y] : P < 0.99 ? [cx, cy] : [-1e4, -1e4];
+  uniforms.uLens.value.set(lens[0] * dpr, (H - lens[1]) * dpr);
+  uniforms.uTime.value = t;
+  const ya = CHAPTERS[yearState.a].year.toUpperCase(), yb = CHAPTERS[yearState.b].year.toUpperCase();
+  if (yearDrawn !== ya + '|' + yb + W + 'x' + H) drawYear(ya, yb);
+  uniforms.uYearMix.value = yearState.mix; uniforms.uYearClear.value = yearState.clear;
+  renderer.setRenderTarget(cellRT); renderer.render(cellScene, camera);
+  renderer.setRenderTarget(null); renderer.setClearColor(BG, 1);
+  renderer.render(scene, camera);
+
+  // HUD: tracking boxes near the cursor while it moves, plus the crosshair cursor. Neither shows past the split.
+  if (P < BEAT[1] || hudLive) {
+    hudLive = P < BEAT[1];
+    hctx.setTransform(dpr, 0, 0, dpr, 0, 0); hctx.clearRect(0, 0, W, H);
+    hctx.font = '500 10px "Geist Mono", ui-monospace, monospace';
+    hctx.lineWidth = 1;
+    const hudA = 1 - clamp01((rise - 0.75) / 0.25);
+    for (const [i, label] of TRACKED) {
+      let [x, y] = project(i);
+      const near = ptr.inside ? Math.max(0, 1 - Math.hypot(x - ptr.x, y - ptr.y) / 190) : 0;
+      const a = near * Math.min(1, ptr.speed * 3 + 0.25) * hudA;
+      if (a < 0.02) continue;
+      if (!reduce) { x += Math.sin(t * 11 + i) * 0.6; y += Math.cos(t * 9 + i) * 0.6; }
+      hctx.globalAlpha = a; hctx.strokeStyle = hctx.fillStyle = '#FAF600';
+      hctx.strokeRect(x - 9, y - 9, 18, 18);
+      hctx.beginPath(); hctx.moveTo(x - 3, y); hctx.lineTo(x + 3, y); hctx.moveTo(x, y - 3); hctx.lineTo(x, y + 3); hctx.stroke();
+      if (label && wipe.v < 0.05) hctx.fillText(label + '  ' + Math.round(x) + ',' + Math.round(y), x + 14, y + 3);
+    }
+    hctx.globalAlpha = 1;
+    if (ptr.inside && P < BEAT[1] && HOVER.matches) {
+      const r = 7 + ptr.speed * 10;
+      hctx.strokeStyle = '#0B0B0B'; hctx.beginPath(); hctx.arc(ptr.x, ptr.y, r, 0, Math.PI * 2); hctx.stroke();
+      hctx.beginPath(); hctx.moveTo(ptr.x - r - 6, ptr.y); hctx.lineTo(ptr.x - r + 2, ptr.y); hctx.moveTo(ptr.x + r - 2, ptr.y); hctx.lineTo(ptr.x + r + 6, ptr.y);
+      hctx.moveTo(ptr.x, ptr.y - r - 6); hctx.lineTo(ptr.x, ptr.y - r + 2); hctx.moveTo(ptr.x, ptr.y + r - 2); hctx.lineTo(ptr.x, ptr.y + r + 6); hctx.stroke();
+    }
+  }
+  const yaw = (rot.y * 57.3).toFixed(1), pitch = (rot.x * 57.3).toFixed(1);
+  const stateLabel = P < BEAT[0] ? (wipe.v > 0 ? 'Scanning' : 'Tracking') : P < BEAT[1] ? 'Split' : P < BEAT[2] ? 'Converting' : P < BEAT[3] ? 'Dissolving' : 'Offline';
+  const ro = 'Face mesh · 478 pts<br>Yaw ' + yaw + '° · Pitch ' + pitch + '° · ' + stateLabel;
+  if (ro !== readoutHTML) readoutEl.innerHTML = readoutHTML = ro;
+  const ho = P > 0.03 ? '0' : '1', rop = String(1 - sm((P - BEAT[2]) / (BEAT[3] - BEAT[2])));
+  if (hintEl.style.opacity !== ho) hintEl.style.opacity = ho;
+  if (readoutEl.style.opacity !== rop) readoutEl.style.opacity = rop;
+  // Headline in two halves: PART ENGINEER. comes in on the first bit of scroll; PART MACHINE. is uncovered by the black as it climbs.
+  const textOut = 1 - sm((sweep - 0.35) / 0.65);
+  uniforms.uTextAmt.value = clamp01((P - 0.01) / 0.16) * textOut;
+  uniforms.uTextR.value = textOut;
+  tapAge++; uniforms.uCodeAmt.value = TOUCH ? clamp01((78 - tapAge) / 24) : 1;
+  uniforms.uHeadSeam.value = headSeam * dpr;
+  // Name: big over the hero, settles into the corner over the first stretch of scroll, halfway down in size.
+  const nameBig = Math.min(67, Math.max(24, innerWidth * 0.0416)), nameSmall = (nameBig + 18) / 2;
+  const nameFs = (nameBig + (nameSmall - nameBig) * sm(P / 0.15)).toFixed(1);
+  if (wordmarkEl.style.fontSize !== nameFs + 'px') {
+    wordmarkEl.style.fontSize = nameFs + 'px';
+    wordmarkEl.parentNode.style.setProperty('--nav-fs', Math.max(14, nameFs * 1.8 / 3.1).toFixed(1) + 'px');
+  }
+}
+
+function onScroll() {
+  progress = Math.max(0, Math.min(1, scrollY / (stage.offsetHeight - innerHeight)));
+  storyScroll();
+}
+function point(x, y) {
+  if (!W || !H) return;
+  const r = gl.getBoundingClientRect();
+  const nx = x - r.left, ny = y - r.top;
+  if (!ptr.inside || ptr.x < 0) { ptr.px = nx; ptr.py = ny; } else { ptr.px = ptr.x; ptr.py = ptr.y; }
+  ptr.x = nx; ptr.y = ny; ptr.inside = true; ptr.moved = true; ptr.lastMove = performance.now() / 1000;
+  rot.ty = (nx / W - 0.5) * 0.27; rot.tx = (ny / H - 0.5) * 0.105;
+}
+addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; if (workEl.contains(e.target)) { ptr.inside = false; return; } point(e.clientX, e.clientY); }, { passive: true });
+addEventListener('pointerdown', e => { if (e.pointerType === 'touch') burst(e.clientX, e.clientY); else point(e.clientX, e.clientY); }, { passive: true });
+function steerTo(e) {
+  const f = e.touches[0], r = gl.getBoundingClientRect();
+  if (!f || !W || !H) return;
+  rot.ty = ((f.clientX - r.left) / W - 0.5) * 0.27; rot.tx = ((f.clientY - r.top) / H - 0.5) * 0.105;
+}
+addEventListener('touchstart', e => { steer.on = true; steerTo(e); }, { passive: true });
+addEventListener('touchmove', steerTo, { passive: true });
+const unsteer = e => { if (!e.touches.length) { steer.on = false; steer.until = performance.now() / 1000 + 1.2; } };
+addEventListener('touchend', unsteer, { passive: true });
+addEventListener('touchcancel', unsteer, { passive: true });
+// A ring of small outward splats: the ink opens like a flower where the finger lands, then fades.
+function burst(x, y) {
+  if (!fluid || !W || !H || reduce || prog > 0.3 || workEl.contains(document.elementFromPoint(x, y))) return;
+  tapAge = 0;
+  for (let k = 0; k < 9; k++) {
+    const a = k / 9 * Math.PI * 2, vx = Math.cos(a), vy = Math.sin(a);
+    fluid.splat((x + vx * 10) / W, 1 - (y + vy * 10) / H, vx * 220, -vy * 220, 1.1, 3.0);
+  }
+}
+document.documentElement.addEventListener('pointerleave', () => { ptr.inside = false; });
+addEventListener('scroll', onScroll, { passive: true });
+reel.parentElement.addEventListener('scroll', storyScroll, { passive: true });  // the phone swipe
+addEventListener('resize', () => renderer && resize());
+
+// Ticks an element's letters and digits in from random 0s and 1s, left to right (same motif as the name).
+function tickIn(el, dur = 600) {
+  const text = el.textContent, n = text.length, t0 = performance.now(); let last = 0;
+  const step = now => {
+    const p = Math.min(1, (now - t0) / dur);
+    if (now - last > 50 || p >= 1) { last = now; let i = 0; el.textContent = [...text].map(ch => (++i) / n <= p || !/[A-Za-z0-9]/.test(ch) ? ch : (Math.random() < 0.5 ? '0' : '1')).join(''); }
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+// Arrivals: big headings rise, hairlines draw, small labels tick in as code, each once as it scrolls into view.
+(function arrivals() {
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('anim');
+  document.querySelectorAll('.today h2, .offer h3').forEach(h => { h.classList.add('rise'); h.innerHTML = '<span>' + h.innerHTML + '</span>'; });
+  const TICKS = '.offer .num, .brands .label, .reach .mono';
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target); e.target.classList.add('in');
+    if (e.target.matches(TICKS)) tickIn(e.target);
+  }), { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.rise, ' + TICKS).forEach(el => io.observe(el));
+  const lines = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { lines.unobserve(e.target); e.target.classList.add('in'); } }), { rootMargin: '0px 0px -30% 0px' });
+  document.querySelectorAll('.channels, .ch, .offers, .offer').forEach(el => lines.observe(el));
+})();
+// Wordmarks slide at a steady speed and ease to a stop under the pointer, then pick back up (replaces the CSS loop).
+(function logoStrip() {
+  const m = document.querySelector('.marquee');
+  if (reduce || !m) return;
+  logoTrack.style.animation = 'none';
+  let x = 0, v = 1, target = 1, last = performance.now(), on = false, half = 0;
+  m.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch') target = 0; });
+  m.addEventListener('pointerleave', () => { target = 1; });
+  const step = now => {
+    if (!on) return;
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    v += (target - v) * Math.min(1, dt * 4);
+    x -= v * half / 48 * dt; if (x <= -half) x += half;
+    logoTrack.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+    requestAnimationFrame(step);
+  };
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting === on) return;
+    on = e.isIntersecting;
+    if (on) { half = logoTrack.scrollWidth / 2; last = performance.now(); requestAnimationFrame(step); }
+  }).observe(m);
+  addEventListener('resize', () => { half = logoTrack.scrollWidth / 2; });
+})();
+document.querySelectorAll('.reel video').forEach(vid => new IntersectionObserver(([e]) => {
+  if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
+}).observe(vid));
+document.getElementById('copy').addEventListener('click', async e => {
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText('kumarabhishekk363@gmail.com'); btn.textContent = 'Copied'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy email'; btn.classList.remove('copied'); }, 1800); }
+  catch (err) { const r = document.createRange(); r.selectNodeContents(document.getElementById('email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+});
+
+// A reload starts at the top, at rest, instead of the browser dropping you back mid-hero with the machine half risen.
+if ('scrollRestoration' in history && !location.hash) history.scrollRestoration = 'manual';
+// ?at=<fraction of the page> jumps straight there with smoothing off (used for screenshots while building).
+const AT = new URLSearchParams(location.search).get('at');
+if (window.Lenis && !reduce && AT === null) {
+  const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+  window.__lenis = lenis;
+  lenis.on('scroll', onScroll);
+  const loop = t => { lenis.raf(t); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+}
+if (AT !== null) addEventListener('load', () => setTimeout(() => { sizeStory(); scrollTo(0, parseFloat(AT) * (document.documentElement.scrollHeight - innerHeight)); onScroll(); }, 300));
+if (window.THREE) initHero(); else addEventListener('load', initHero);
+</script>
+</body>
+</html>

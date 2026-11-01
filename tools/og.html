@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- The 1200x630 social preview: the portrait on the light half, the machine on the dark half, split at the seam.
+     node tools/shoot.mjs og.png --url=file:///…/tools/og.html --w=1200 --h=630 ; then convert to assets/og.jpg -->
+<html lang="en"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: 'Archivo'; font-weight: 300 900; font-stretch: 62% 125%; src: url(../assets/fonts/archivo-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 400 500; src: url(../assets/fonts/geist-mono-latin.woff2) format('woff2'); }
+html, body { margin: 0; }
+body { width: 1200px; height: 630px; position: relative; overflow: hidden; background: #F8F8F6; font-family: Archivo, sans-serif; }
+.half { position: absolute; top: 0; bottom: 0; overflow: hidden; }
+.l { left: 0; width: 600px; background: #F8F8F6; }
+.r { left: 600px; width: 600px; background: #0B0B0B; }
+.half img { position: absolute; width: var(--iw); height: var(--ih); left: calc(600px - var(--iw) / 2); top: var(--it); object-fit: cover; }
+.r img { left: calc(-1 * var(--iw) / 2); }
+.name { position: absolute; left: 40px; top: 34px; font-weight: 850; font-stretch: 112%; font-size: 40px; line-height: .9; text-transform: uppercase; color: #0B0B0B; letter-spacing: -.01em; }
+.head { position: absolute; top: 215px; font-weight: 850; font-stretch: 112%; font-size: 64px; line-height: .88; text-transform: uppercase; letter-spacing: -.01em; }
+.head.l { left: 0; width: 440px; text-align: right; color: #0B0B0B; background: none; bottom: auto; overflow: visible; }
+.head.r { left: 756px; width: 440px; text-align: left; color: #fff; background: none; bottom: auto; overflow: visible; }
+.url { position: absolute; right: 40px; bottom: 28px; font-family: 'Geist Mono', monospace; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: #8A8A85; }
+</style></head>
+<body style="--iw:593px;--ih:800px;--it:-56px">
+  <div class="half l"><img src="../assets/hero/face.webp" alt=""></div>
+  <div class="half r"><img src="../assets/hero/machine.webp" alt=""></div>
+  <div class="name">Abhishek<br>Kumar</div>
+  <div class="head l">Part<br>Engineer.</div>
+  <div class="head r">Part<br>Machine.</div>
+  <div class="url">Engineer · Turin</div>
+</body></html>
